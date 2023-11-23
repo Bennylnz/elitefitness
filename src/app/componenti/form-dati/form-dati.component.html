@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="wrapper">   
+          <h1>Inserisci i tuoi dati</h1>
+          <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+          <div class="input-box text-center">
+            <label for="newName">Nome</label>
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Inserisci il tuo nome" required >              
+          </div>
+          <div class="input-box text-center mt-5">
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" name="cognome" [(ngModel)]="nuovoCognome" placeholder="Inserisci il tuo cognome" required >
+          </div>    
+          <div class="input-box text-center mt-5">
+            <label for="dataDiNascita">Data di nascita</label>
+            <input type="date" id="dataDiNascita" name="dataDiNascita"  [(ngModel)]="nuovaDataDiNascita" placeholder="Inserisci la tua data di nascita" required >
+          </div>  
+          <div class="input-box text-center mt-5">
+            <label for="codiceFiscale">Codice fiscale</label>
+            <input type="text" id="codiceFiscale" name="codiceFiscale" [(ngModel)]="nuovoCodiceFiscale" placeholder="Inserisci il tuo codice fiscale" required >
+          </div>      
+          <button class="btn" type="submit" [disabled]="!myForm.valid">Inserisci i dati</button>          
+        </form>
+  </div>
+</body>
+
+
+
+

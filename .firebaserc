@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "elitefitness-c60bf",
+    "staging": "elitefitness-c60bf"
+  },
+  "targets": {
+    "elitefitness-c60bf": {
+      "hosting": {
+        "gym": [
+          "elitefitness-c60bf"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
