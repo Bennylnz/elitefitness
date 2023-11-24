@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataServiceService } from 'src/app/data-service.service';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profilo',
@@ -22,7 +22,7 @@ export class ProfiloComponent implements OnInit {
     private firestore: AngularFirestore,
     private dataService: DataServiceService,
     private router: Router,
-    public dialog: MatDialog
+    public toastr : ToastrService
   ) {}
 
   ngOnInit() {
@@ -51,11 +51,8 @@ export class ProfiloComponent implements OnInit {
         // Elimina il record corrispondente da Firestore
         const uid = (await user).uid;
         await this.firestore.collection('utenti').doc(uid).delete();
-        await this.firestore.collection('users').doc(uid).delete();
-
-        console.log('Utente eliminato da Firestore.');
-
-        // Puoi aggiungere una logica di reindirizzamento o mostrare un messaggio di successo qui.
+        await this.firestore.collection('users').doc(uid).delete();     
+        this.toastr.success('Dati eliminati correttamente')
         this.router.navigate(['/login']);
       } catch (error) {
         console.error('Errore durante la cancellazione dell\'utente o del record da Firestore:', error);

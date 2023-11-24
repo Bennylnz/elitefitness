@@ -2,8 +2,9 @@
     slides-per-view="auto">
     <swiper-slide *ngFor="let istruttore of carouselService.istruttori" >  
       <div class="card d-flex align-items-center">
-      <img src="https://picsum.photos/200/300" alt="">
+      <img src="{{istruttore.img}}" alt="">
     <h3 class="title">{{istruttore.nome}}</h3>
+    <p class="title">{{istruttore.disciplina}}</p>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>

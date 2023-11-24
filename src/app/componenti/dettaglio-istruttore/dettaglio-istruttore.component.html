@@ -1,4 +1,19 @@
-<div *ngIf="selectedCard">
-    <h2>{{ selectedCard.nome }}</h2>
-    <p>{{ selectedCard.descrizione }}</p>
+  <app-navbar></app-navbar>
+  <div class="container mt-5 vh-100 d-flex align-items-center" *ngIf="selectedCard">
+    <div class="row w-100 d-flex align-items-start justify-content-between">
+      <div class="col-12 col-md-6 d-flex justify-content-center">
+        <img src="{{selectedCard.img}}" alt="">
+      </div>
+      <div class="col-12 col-md-6 d-flex flex-column align-items-start">
+        <h2>{{ selectedCard.nome }}</h2>
+        <p>{{selectedCard.disciplina}}</p>
+        <p>{{ selectedCard.descrizione }}</p>
+
+        <p>Voui prenotare una lezione con {{selectedCard.nome}}? Clicca qui 
+          <a href="https://wa.me/393888663981">
+            <i class="fa-brands fa-whatsapp fa-bounce fa-2xl ms-3" style="color: #25d366;"></i>
+          </a>
+        </p>
+      </div>
+    </div>
   </div>
