@@ -8,7 +8,7 @@ export class CarouselIstruttoriService {
   constructor() { }
 
   istruttori = [
-    {id: 1,nome: 'Angelo Todaro' , descrizione: 'descrizione finta' , img : 'https://picsum.photos/200/300' , disciplina: 'nome disciplina'},
+    {id: 1,nome: 'Angelo Todaro' , descrizione: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptas modi beatae natus amet, mollitia perferendis error qui enim veniam saepe corrupti placeat esse aperiam maxime, nostrum ratione nisi architecto?' , img : '../assets/media/test.png' , disciplina: 'Powerlifting'},
     {id: 2, nome: '1' , descrizione: 'descrizione finta' , img : 'https://picsum.photos/200/301' , disciplina: 'nome disciplina'},
     {id: 3, nome: '2' , descrizione: 'descrizione finta' , img : 'https://picsum.photos/200/302' , disciplina: 'nome disciplina'},
     {id: 4, nome: '3' , descrizione: 'descrizione finta' , img : 'https://picsum.photos/200/303' , disciplina: 'nome disciplina'},

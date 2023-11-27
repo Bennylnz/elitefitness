@@ -41,6 +41,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { FooterComponent } from './componenti/footer/footer.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     FormDatiComponent,
     SpinnerComponent,
     DettaglioIstruttoreComponent,
+    FooterComponent,
    
   ],
   imports: [

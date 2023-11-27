@@ -3,17 +3,21 @@
     <swiper-slide *ngFor="let istruttore of carouselService.istruttori" >  
       <div class="card d-flex align-items-center">
       <img src="{{istruttore.img}}" alt="">
-    <h3 class="title">{{istruttore.nome}}</h3>
-    <p class="title">{{istruttore.disciplina}}</p>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-      <p class="text-light mt-2">{{istruttore.descrizione}}</p>
-      <button class="btn text-light" (click)="onCardClick(istruttore)">Dettaglio</button>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+    <h3 class="title mb-0">{{istruttore.nome}}</h3>
+    <p class="text-white fw-lighter mb-2">{{istruttore.disciplina}}</p>
+    <div class="text-truncate-container">
+      <p class="text-light fst-italic">{{istruttore.descrizione}}</p>
     </div>
+    <button class="btn text-light my-2" (click)="onCardClick(istruttore)">Dettaglio</button>
   </div>   
 </swiper-slide>
     
 </swiper-container>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+

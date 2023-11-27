@@ -38,7 +38,6 @@ swiper-container {
       transform: scale(1.30);
       z-index: 1;
       box-shadow: -1rem 0 3rem #000;
-  
       
     }
     
@@ -50,13 +49,34 @@ swiper-container {
     
     .title {
       color: white;
-      font-weight: 300;
-     
+      font-weight: bold;     
+      font-size: 25px;
+
     }
+
+    .fst-italic{
+      font-size: 9px;    
+    }
+
+    .fw-lighter{
+      font-size: 12.5px;
+    }
+
+    .text-truncate-container p {
+      -webkit-line-clamp: 3;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      width: 170px;
+      margin-bottom: 0px;
+    }
+  
+
+    
     
     .bar {
       position: absolute;
-      top: 200px;
+      top: 210px;
       left: 20px;
       height: 5px;
       width: 150px;
@@ -85,11 +105,11 @@ swiper-container {
     }
   
     img{
-      width: 100px;
-      height: 100px;
+      width: 200px;
+      height: 200px;
       margin-top: 10px;
       margin-bottom: 10px;
-      border-radius: 50%;
+      
     }
   
     

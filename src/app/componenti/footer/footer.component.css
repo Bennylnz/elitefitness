@@ -1,0 +1,16 @@
+footer{
+    background-color: #212529;
+    color: white;
+}
+
+.fa-brands{
+    color: white;
+}
+
+.nav{
+    margin-right: 50px;
+}
+
+.copyright{
+    font-size: smaller;
+}
