@@ -4,8 +4,20 @@
 
 *{
     scroll-behavior: smooth;
+    background-color: var(--grey) !important;
 }
 
+.headerBanner{
+    background-image: url('../../../assets/media/bannerHeader.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.bannerPromo{
+    background-image: url('../../../assets/media/promo.png');
+    background-position: center;
+    background-size: cover;
+}
 
 
   

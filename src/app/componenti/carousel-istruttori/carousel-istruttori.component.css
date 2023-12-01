@@ -2,6 +2,7 @@ swiper-container {
     width: 100%;
     height: 80%;
     padding-left: 0px;
+    background-color: var(--grey);
     }
   
   swiper-slide {
@@ -18,10 +19,11 @@ swiper-container {
   
   /* Card istruttori */
     .card {
+      font-family: "museo-slab" , serif;
       display: flex;
       height: 380px;
       width: 200px;
-      background-color: #17141d;
+      background-color: #444249;
       border-radius: 10px;
       transition: 0.4s ease-out;
       position: relative;
@@ -94,8 +96,8 @@ swiper-container {
       z-index: 3;
       width: 0px;
       height: 100%;
-      background: rgb(0,154,217);
-      background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+      background: rgb(153,0,0);
+      background: linear-gradient(90deg, rgba(153,0,0,1) 30%, rgba(242,183,5,1) 70%);
       transition: 0.6s ease-out;
     }
     
