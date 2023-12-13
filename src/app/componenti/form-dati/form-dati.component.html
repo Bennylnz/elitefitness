@@ -4,26 +4,56 @@
           <h1>Inserisci i tuoi dati</h1>
           <form (ngSubmit)="onSubmit()" #myForm="ngForm">
           <div class="input-box text-center">
-            <label for="newName">Nome</label>
-            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Inserisci il tuo nome" required >              
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input type="text" matInput [formControl]="nomeFormControl" id="newName" [(ngModel)]="newName" name="newName" placeholder="Inserisci il tuo nome" required>
+              <mat-error *ngIf="nomeFormControl.hasError('required')">
+                Il nome è <strong>obbligatorio</strong>
+              </mat-error>
+            </mat-form-field>
           </div>
+
+
           <div class="input-box text-center mt-5">
-            <label for="cognome">Cognome</label>
-            <input type="text" id="cognome" name="cognome" [(ngModel)]="nuovoCognome" placeholder="Inserisci il tuo cognome" required >
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Cognome</mat-label>
+              <input type="text" matInput [formControl]="cognomeFormControl"  id="cognome" name="cognome" [(ngModel)]="nuovoCognome" placeholder="Inserisci il tuo cognome" required >
+              <mat-error *ngIf="cognomeFormControl.hasError('required')">
+                Il cognome è <strong>obbligatorio</strong>
+              </mat-error>
+            </mat-form-field>
           </div>    
+
+
           <div class="input-box text-center mt-5">
-            <label for="dataDiNascita">Data di nascita</label>
-            <input type="date" id="dataDiNascita" name="dataDiNascita"  [(ngModel)]="nuovaDataDiNascita" placeholder="Inserisci la tua data di nascita" required >
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Data Di Nascita</mat-label>
+              <input type="date" matInput [formControl]="dataDiNascitaFormControl"  id="dataDiNascita" name="dataDiNascita"  [(ngModel)]="nuovaDataDiNascita" placeholder="Inserisci la tua data di nascita" required>
+              <mat-error *ngIf="dataDiNascitaFormControl.hasError('required')">
+                La Data di Nascita è <strong>obbligatoria</strong>
+              </mat-error>
+            </mat-form-field>
           </div>  
+
+          
           <div class="input-box text-center mt-5">
-            <label for="codiceFiscale">Codice fiscale</label>
-            <input type="text" id="codiceFiscale" name="codiceFiscale" [(ngModel)]="nuovoCodiceFiscale" placeholder="Inserisci il tuo codice fiscale" required >
-          </div>      
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Codice Fiscale</mat-label>
+              <input type="text" matInput [formControl]="codiceFiscaleFormControl"  id="codiceFiscale" name="codiceFiscale" [(ngModel)]="nuovoCodiceFiscale" placeholder="Inserisci il tuo codice fiscale" required >
+              <mat-error *ngIf="codiceFiscaleFormControl.hasError('required')">
+                Il Codice Fiscale è <strong>obbligatorio</strong>
+              </mat-error>
+            </mat-form-field>
+          </div> 
+          
+          <div class="input-box text-center mt-5">
+            <label for="photo">Carica Foto</label>
+            <input type="file" id="photo" name="photo" (change)="onFileSelected($event)">
+          </div>
+
           <button class="btn" type="submit" [disabled]="!myForm.valid">Inserisci i dati</button>          
         </form>
   </div>
 </body>
-
-
 
 

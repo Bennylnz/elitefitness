@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './componenti/landing/landing.component';
 import { LoginComponent } from './componenti/login/login.component';
-import { IstruttoriComponent } from './componenti/istruttori/istruttori.component';
 import { NavbarComponent } from './componenti/navbar/navbar.component';
 import { RegistratiComponent } from './componenti/registrati/registrati.component';
 import { PassDimenticataComponent } from './componenti/pass-dimenticata/pass-dimenticata.component';
@@ -27,6 +26,7 @@ import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/
 import {MatDialogModule} from '@angular/material/dialog';
 
 
+
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -44,12 +44,12 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FooterComponent } from './componenti/footer/footer.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     LoginComponent,
-    IstruttoriComponent,
     NavbarComponent,
     RegistratiComponent,
     PassDimenticataComponent,
@@ -61,7 +61,7 @@ import { FooterComponent } from './componenti/footer/footer.component';
     SpinnerComponent,
     DettaglioIstruttoreComponent,
     FooterComponent,
-   
+    
   ],
   imports: [
     BrowserModule,

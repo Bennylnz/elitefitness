@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarouselDisciplineService } from 'src/app/carousel-discipline.service';
 
 @Component({
   selector: 'app-carousel-discipline',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./carousel-discipline.component.css']
 })
 export class CarouselDisciplineComponent {
+  constructor(private router : Router , public carouselServiceDiscipline : CarouselDisciplineService){}
 
 }

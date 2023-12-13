@@ -2,6 +2,8 @@
     height: 50vh;
 }
 
+
+
 *{
     scroll-behavior: smooth;
     background-color: var(--grey) !important;
@@ -17,9 +19,20 @@
     background-image: url('../../../assets/media/promo.png');
     background-position: center;
     background-size: cover;
+    /* height: 100vh; */
 }
 
+.vision , .mission{
+    font-family: "museo-slab" , serif;
+    font-weight: 300;
+    font-size: x-large;
+}
 
+@media screen and (max-width: 992px) {
+    .bannerPromo {
+        height: 190px;      
+    }
+  }
   
 
 

@@ -1,48 +1,32 @@
 <app-navbar></app-navbar>
 
-<!-- Sidebar navigation -->
-<div class="container-fluid mt-5">
-  <div class="row">
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 vh-100 d-flex flex-column align-items-center justify-content-start">
       <div class="inner-adjust">
-        <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Profile</h1>
-        </div>
         <!-- Show user data when logged in -->
         <div class="row" *ngIf="authService.userData as user">
           <div class="col-md-12">
             <div class="media">
               <div class="media-body">
-                <h1>Hello: <strong>{{ user.displayName | titlecase }} {{ cognome | titlecase }}</strong></h1>
+                <div class="d-flex justify-content-center">
+                  <img class="profileImg" *ngIf="photoURL" [src]="photoURL" alt="Foto Profilo">
+                </div>
+                <h1 class="titleName"><strong>{{ user.displayName | titlecase }} {{ cognome | titlecase }}</strong></h1>
+                <p class="titleSurname">Studente</p>
                 <p>Data di nascita: {{ dataDiNascita | date:'dd/MM/yyyy' }}</p>
                 <p>Codice fiscale: {{ codiceFiscale | uppercase }}</p>
-                <p>User ID: <strong>{{ user.uid }}</strong></p>
+                <!-- <p>User ID: <strong>{{ user.uid }}</strong></p> -->
                 <p>Email: <strong>{{ user.email }}</strong></p>
-                <p>Email Verified: <strong>{{ user.emailVerified }}</strong></p>           
+                <p>Email Verified: <strong>{{ user.emailVerified }}</strong></p>  
                 
-
-                <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Elimina dati profilo
+                <div class="buttons d-flex justify-content-center">
+                  <button routerLink="/datipersonali" class="btn btn-light rounded-pill btn-update">Modifica Profilo</button>
+                  <button type="button" class="btn btn-light rounded-pill ms-3 btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Elimina Profilo
                   </button>
+                </div>
+                <!-- Button trigger modal -->
+                  
 
                   <!-- Modal -->
                   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -61,12 +45,12 @@
                         </div>
                       </div>
                     </div>
-                  </div>                
+                  </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
-  </div>
-</div>
+ 

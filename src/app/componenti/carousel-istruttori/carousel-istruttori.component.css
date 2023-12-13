@@ -16,6 +16,14 @@ swiper-container {
     margin-right: 0px !important;
     padding: 0px !important;
   }
+
+  swiper-container::part(bullet-active) {
+    background-color: white;
+  }
+  swiper-container::part(bullet) {
+    background-color: hsl(0, 0%, 50%);
+    opacity: 1;
+  }
   
   /* Card istruttori */
     .card {

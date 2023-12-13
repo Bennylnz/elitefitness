@@ -88,7 +88,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null ;
   }
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
@@ -102,8 +102,7 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-      
+      emailVerified: user.emailVerified,      
     };
     return userRef.set(userData, {
       merge: true,

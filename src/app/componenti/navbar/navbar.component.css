@@ -19,7 +19,11 @@ nav{
     }
     .navbar {
         height: 52px;
+    }  
+    .center-ul{
+        margin-left: 0px !important;        
     }
+   
 }
 
 
@@ -32,3 +36,20 @@ nav{
 button{
     border: transparent;
 }
+
+.profileImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: 5px;
+}
+
+
+.center-ul{
+    margin-left: 200px;
+}
+
+
+   
+

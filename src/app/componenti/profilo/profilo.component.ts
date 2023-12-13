@@ -15,6 +15,7 @@ export class ProfiloComponent implements OnInit {
   cognome: string;
   dataDiNascita: string;
   codiceFiscale: string;
+  photoURL: string;  // Aggiunta variabile per l'URL dell'immagine
 
   constructor(
     public authService: AuthService,
@@ -38,6 +39,15 @@ export class ProfiloComponent implements OnInit {
     this.dataService.codiceFiscale.subscribe(nuovoCodiceFiscale => {
       this.codiceFiscale = nuovoCodiceFiscale;
     });
+       // Recupera l'URL dell'immagine dal Firestore
+       this.afAuth.authState.subscribe(user => {
+        if (user) {
+          const uid = user.uid;
+          this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
+            this.photoURL = userData['photoURL'];
+          });
+        }
+      });
   }
 
   async deleteAccount() {

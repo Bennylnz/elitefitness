@@ -1,0 +1,38 @@
+.profileImg{
+    border-radius: 50%;
+    width: 230px;
+    height: 230px;
+    border: 5px solid white;
+   
+}
+
+*{
+    background-color: var(--grey);
+    color: white;
+}
+
+.titleName{
+    margin-bottom: 0px;
+    margin-top: 40px;
+}
+
+.titleSurname{     
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+main{
+    padding-top: 75px;
+}
+
+.buttons{
+    margin-top: 35px;
+}
+
+.btn-delete{
+    font-weight:bold
+}
+
+.btn-update , .btn-delete{
+    padding: 6px 9px !important;
+    font-size: smaller;
+}

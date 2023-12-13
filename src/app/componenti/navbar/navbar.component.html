@@ -1,39 +1,51 @@
 <nav class="navbar navbar-expand-lg fixed-top py-0" data-bs-theme="dark">
-    <div class="container-fluid" >
-        <a class="navbar-brand" href="#"><img class="logo" src="../../../assets/media/pictogram.png"  alt=""></a>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="logo" src="../../../assets/media/pictogram.png" alt=""></a>
         <button class="navbar-toggler me-3 border-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="fa-solid fa-bars fa-lg" style="color: #ffffff;"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center flex-grow-1">
+                <ul class="navbar-nav mb-2 mb-lg-0 center-ul">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#istruttori">Tutors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#corsi">Corsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contatti</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="istruttori">Tutors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#corsi">Corsi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Contatti</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav mb-2 mb-lg-0" >
+                    <a class="nav-link me-2 fw-bold" (click)="authService.SignOut()" *ngIf="isUserLoggedIn()">
+                      Log out
+                    </a>
+                  </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/registrati" *ngIf="!isUserLoggedIn()">Registrati</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/login" *ngIf="!isUserLoggedIn()">Login</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/profilo"  *ngIf="isUserLoggedIn()">Profilo</a>
+                <li class="nav-item d-flex align-items-center justify-content-center">
+                    <img class="profileImg" *ngIf="photoURL" [src]="photoURL" alt="Foto Profilo">
+                    <a class="nav-link" routerLink="/profilo"  *ngIf="isUserLoggedIn()">{{ userDisplayName | titlecase }} {{ userCognome | titlecase}}</a>
                 </li>
             </ul>
+        </div>
     </div>
-</div>
 </nav>
+
+
+
+
 
