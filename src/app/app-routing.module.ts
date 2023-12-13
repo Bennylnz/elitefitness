@@ -8,6 +8,7 @@ import { VerificaemailComponent } from './componenti/verificaemail/verificaemail
 import { ProfiloComponent } from './componenti/profilo/profilo.component';
 import { FormDatiComponent } from './componenti/form-dati/form-dati.component';
 import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/dettaglio-istruttore.component';
+import { FormModificaComponent } from './componenti/form-modifica/form-modifica.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'verificaemail', component: VerificaemailComponent },
     {path: 'profilo', component: ProfiloComponent },
     {path: 'datipersonali', component: FormDatiComponent },
+    {path: 'modificadatipersonali', component: FormModificaComponent },
     {path: 'dettaglio/:id', component: DettaglioIstruttoreComponent },
 ];
 

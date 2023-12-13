@@ -12,11 +12,11 @@ import { finalize } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-form-dati',
-  templateUrl: './form-dati.component.html',
-  styleUrls: ['./form-dati.component.css']
+  selector: 'app-form-modifica',
+  templateUrl: './form-modifica.component.html',
+  styleUrls: ['./form-modifica.component.css']
 })
-export class FormDatiComponent {
+export class FormModificaComponent {
 
   nomeFormControl = new FormControl('', [Validators.required]);
   cognomeFormControl = new FormControl('', [Validators.required]);
@@ -39,6 +39,13 @@ export class FormDatiComponent {
   selectedFile: File;
   downloadURL: string;
 
+
+  userDisplayName: string;
+  cognome: string;
+  dataDiNascita: string;
+  codiceFiscale: string;
+  photoURL: string;  // Aggiunta variabile per l'URL dell'immagine
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -48,7 +55,46 @@ export class FormDatiComponent {
     private storage: AngularFireStorage,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore
-  ) {}
+    ) {}
+    
+    ngOnInit() {    
+    // Recupera i dati dell'utente dal Firestore quando l'utente è autenticato
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        const uid = user.uid;
+        this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
+        })
+        this.firestore.collection('users').doc(uid).valueChanges().subscribe(userData => {
+          this.userDisplayName = userData['displayName'];          
+        })
+        ;
+      }
+    });
+    // Abbonati ai cambiamenti del cognome, data di nascita e codice fiscale  
+    this.dataService.cognome.subscribe(nuovoCognome => {
+      this.cognome = nuovoCognome;
+    });
+
+    this.dataService.dataNascita.subscribe(nuovaDataDiNascita => {
+      this.dataDiNascita = nuovaDataDiNascita;
+    });
+
+    this.dataService.codiceFiscale.subscribe(nuovoCodiceFiscale => {
+      this.codiceFiscale = nuovoCodiceFiscale;
+    });
+       // Recupera l'URL dell'immagine dal Firestore
+       this.afAuth.authState.subscribe(user => {
+        if (user) {
+          const uid = user.uid;
+          this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
+            this.photoURL = userData['photoURL'];
+          });
+        }
+      });
+
+      
+      
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -101,7 +147,5 @@ export class FormDatiComponent {
     } else {
       this.toastr.error('Il codice fiscale deve avere 11 caratteri');
     }
-  }
-
-  
+  }  
 }

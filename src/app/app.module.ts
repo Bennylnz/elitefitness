@@ -42,6 +42,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FooterComponent } from './componenti/footer/footer.component';
+import { FormModificaComponent } from './componenti/form-modifica/form-modifica.component';
 
 
 
@@ -61,6 +62,7 @@ import { FooterComponent } from './componenti/footer/footer.component';
     SpinnerComponent,
     DettaglioIstruttoreComponent,
     FooterComponent,
+    FormModificaComponent,
     
   ],
   imports: [
