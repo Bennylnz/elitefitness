@@ -17,7 +17,7 @@
                 <p>Codice fiscale: {{ codiceFiscale | uppercase }}</p>
                 <!-- <p>User ID: <strong>{{ user.uid }}</strong></p> -->
                 <p>Email: <strong>{{ user.email }}</strong></p>
-                <p>Email Verified: <strong>{{ user.emailVerified }}</strong></p>  
+                <p>Email Verificata: <strong>{{ user.emailVerified == true ? 'Hai già verificato la tua E-mail' : 'Devi verificare la tua E-mail'  }}</strong> <button class="btn btn-light rounded-pill ms-3 btn-delete" *ngIf="user.emailVerified == false" (click)="SendVerificationMail()">Verifica e-mail</button></p>  
                 
                 <div class="buttons d-flex justify-content-center">
                   <button routerLink="/modificadatipersonali" class="btn btn-light rounded-pill btn-update">Modifica Profilo</button>

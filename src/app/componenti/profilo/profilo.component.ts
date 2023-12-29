@@ -70,5 +70,14 @@ export class ProfiloComponent implements OnInit {
     }
   }
 
+  SendVerificationMail() {
+    return this.afAuth.currentUser
+      .then((u: any) => u.sendEmailVerification())
+      .then(() => {
+        this.toastr.success('E-mail di verifica inviata correttamente, controlla la tua casella posta in arrivo e clicca nel link per verificare la tua E-mail')
+
+      });
+  }
+
   
 }

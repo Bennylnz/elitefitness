@@ -23,7 +23,14 @@ nav{
     .center-ul{
         margin-left: 0px !important;        
     }
+    .reg{
+        margin-left: 0px !important;
+    }
    
+}
+
+.reg{
+    margin-left: 70px;
 }
 
 

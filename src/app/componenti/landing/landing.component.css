@@ -15,12 +15,7 @@
     background-size: cover;
 }
 
-.bannerPromo{
-    background-image: url('../../../assets/media/promo.png');
-    background-position: center;
-    background-size: cover;
-    /* height: 100vh; */
-}
+
 
 .vision , .mission{
     font-family: "museo-slab" , serif;
@@ -28,12 +23,22 @@
     font-size: x-large;
 }
 
-@media screen and (max-width: 992px) {
-    .bannerPromo {
-        height: 190px;      
+
+.img-promo{
+    max-width: 100%;
+}
+  
+
+@media screen and (min-width: 1800px) {
+    .img-promo {
+        width: 100vw;      
     }
   }
-  
+
+  video{
+    width: 100%;
+    height: 100vh;
+  }
 
 
 

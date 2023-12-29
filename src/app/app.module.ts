@@ -24,7 +24,8 @@ import { SpinnerComponent } from './componenti/spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/dettaglio-istruttore.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { AuthService } from './shared/services/auth.service';
+ 
 
 
 // Firebase
@@ -46,6 +47,7 @@ import { FormModificaComponent } from './componenti/form-modifica/form-modifica.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +65,7 @@ import { FormModificaComponent } from './componenti/form-modifica/form-modifica.
     DettaglioIstruttoreComponent,
     FooterComponent,
     FormModificaComponent,
+   
     
   ],
   imports: [
@@ -91,8 +94,11 @@ import { FormModificaComponent } from './componenti/form-modifica/form-modifica.
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+    AuthService, // Incluso il servizio nei providers
   ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
