@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 declare var window: any;
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,11 @@ import { ToastrService } from 'ngx-toastr';
 
 export class AuthService {
   userData: any; // Save logged in user data
+
+  private userEmailSource = new BehaviorSubject<string>('');
+  userEmail = this.userEmailSource.asObservable();
+
+
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -33,6 +39,15 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user')!);
       }
     });
+
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userEmailSource.next(user.email || ''); // Invia l'email all'observable
+        // ... codice esistente ...
+      }
+    });
+
+    
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {

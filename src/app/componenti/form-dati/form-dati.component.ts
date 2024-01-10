@@ -22,6 +22,8 @@ export class FormDatiComponent {
   cognomeFormControl = new FormControl('', [Validators.required]);
   codiceFiscaleFormControl = new FormControl('', [Validators.required, Validators.minLength(11)]);
   dataDiNascitaFormControl = new FormControl('', [Validators.required]);
+  numeroTelefonoFormControl = new FormControl('', [Validators.required]);
+
 
   myForm: FormGroup;
   newName: string = '';
@@ -35,6 +37,9 @@ export class FormDatiComponent {
 
   nuovoCodiceFiscale: string = '';
   nuovoCodiceFiscaleTouched: boolean = false;
+
+  nuovoNumeroTelefono: string = '';
+  nuovoNumeroTelefonoTouched: boolean = false;
 
   selectedFile: File;
   downloadURL: string;
@@ -63,6 +68,8 @@ export class FormDatiComponent {
       this.dataService.aggiornaCognome(this.nuovoCognome);
       this.dataService.aggiornaDataNascita(this.nuovaDataDiNascita);
       this.dataService.aggiornaCodiceFiscale(this.nuovoCodiceFiscale);
+      this.dataService.aggiornaNumeroTelefono(this.nuovoNumeroTelefono);
+
 
       // Carica l'immagine solo se è stata selezionata
       if (this.selectedFile) {

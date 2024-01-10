@@ -1,4 +1,16 @@
-img{
-    width: 400px;
-    border-radius: 20px;
+body {    
+    overflow: hidden; 
+    background-color: hsl(260, 5%, 32%);
+    color: white;
+}
+
+img {
+    max-height: 60vh; 
+    border-radius: 20px;  
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        overflow-y: visible;
+    }
 }

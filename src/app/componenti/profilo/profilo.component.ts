@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataServiceService } from 'src/app/data-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-profilo',
@@ -15,7 +18,19 @@ export class ProfiloComponent implements OnInit {
   cognome: string;
   dataDiNascita: string;
   codiceFiscale: string;
+  numeroTelefono: string;
   photoURL: string;  // Aggiunta variabile per l'URL dell'immagine
+
+  isUserWithEmailAllowed: boolean = false;
+  users: any[] = []; // Aggiungi un array per memorizzare i dati degli utenti
+  utentiData: any[] = [];
+
+  dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['displayName', 'cognome', 'email', 'uid']; // Add more columns if needed
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(
     public authService: AuthService,
@@ -23,31 +38,67 @@ export class ProfiloComponent implements OnInit {
     private firestore: AngularFirestore,
     private dataService: DataServiceService,
     private router: Router,
-    public toastr : ToastrService
-  ) {}
+    public toastr: ToastrService
+  ) {
+    this.dataSource = new MatTableDataSource<any>([]);
+  }
 
   ngOnInit() {
-    // Abbonati ai cambiamenti del cognome, data di nascita e codice fiscale
-    this.dataService.cognome.subscribe(nuovoCognome => {
+    // Subscribe to changes in cognome, dataNascita, and codiceFiscale
+    this.dataService.cognome.subscribe((nuovoCognome: string) => {
       this.cognome = nuovoCognome;
     });
-
-    this.dataService.dataNascita.subscribe(nuovaDataDiNascita => {
+  
+    this.dataService.dataNascita.subscribe((nuovaDataDiNascita: string) => {
       this.dataDiNascita = nuovaDataDiNascita;
     });
-
-    this.dataService.codiceFiscale.subscribe(nuovoCodiceFiscale => {
+  
+    this.dataService.codiceFiscale.subscribe((nuovoCodiceFiscale: string) => {
       this.codiceFiscale = nuovoCodiceFiscale;
     });
-       // Recupera l'URL dell'immagine dal Firestore
-       this.afAuth.authState.subscribe(user => {
-        if (user) {
-          const uid = user.uid;
-          this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
-            this.photoURL = userData['photoURL'];
-          });
-        }
-      });
+    this.dataService.numeroTelefono.subscribe((nuovoNumeroTelefono: string) => {
+      this.numeroTelefono = nuovoNumeroTelefono;
+    });
+  
+    // Retrieve the image URL from Firestore
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        const uid = user.uid;
+        this.firestore.collection('utenti').doc(uid).valueChanges().subscribe((userData: any) => {
+          this.photoURL = userData['photoURL'];
+        });
+      }
+    });
+  
+    // Subscribe to changes in userEmail
+    this.authService.userEmail.subscribe((email: string) => {
+      this.isUserWithEmailAllowed = this.isAllowedEmail(email);
+  
+      if (this.isUserWithEmailAllowed) {
+        // Retrieve data from the 'users' collection
+        this.firestore.collection('users').valueChanges().subscribe((data: any[]) => {
+          this.dataSource.data = data;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
+  
+        // Retrieve data from the 'utenti' collection
+        this.afAuth.authState.subscribe((user) => {
+          if (user) {
+            const uid = user.uid;
+            this.firestore.collection('utenti').doc(uid).valueChanges().subscribe((userData) => {
+              this.utentiData = [userData];
+            });
+          }
+        });
+      }
+    });
+  }
+  
+
+  private isAllowedEmail(email: string): boolean {
+    // Aggiungi la tua logica per determinare se l'email dell'utente è consentita
+    return email === 'bennylanza@gmail.com';
   }
 
   async deleteAccount() {
@@ -79,5 +130,8 @@ export class ProfiloComponent implements OnInit {
       });
   }
 
-  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

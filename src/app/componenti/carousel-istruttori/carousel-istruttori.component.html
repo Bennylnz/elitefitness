@@ -10,9 +10,9 @@
     <h3 class="title mb-0">{{istruttore.nome}}</h3>
     <p class="text-white fw-lighter mb-2">{{istruttore.disciplina}}</p>
     <div class="text-truncate-container">
-      <p class="text-light fst-italic">{{istruttore.descrizione}}</p>
+      <p class="text-light fst-italic text-start">{{istruttore.descrizione}}</p>
     </div>
-    <button class="btn text-light my-2" (click)="onCardClick(istruttore)">Dettaglio</button>
+    <button class="btn text-light my-2" (click)="openPopup(istruttore)">Dettaglio</button>
   </div>   
 </swiper-slide>
     

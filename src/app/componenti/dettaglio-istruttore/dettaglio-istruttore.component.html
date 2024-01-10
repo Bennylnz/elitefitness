@@ -1,15 +1,14 @@
-  <app-navbar></app-navbar>
-  <div class="container mt-5 vh-100 d-flex align-items-center" *ngIf="selectedCard">
-    <div class="row w-100 d-flex align-items-start justify-content-between">
+<body>
+  <div class="container mt-5 d-flex align-items-center justify-content-center" *ngIf="selectedCard">
+    <div class="row w-100">
       <div class="col-12 col-md-6 d-flex justify-content-center">
-        <img src="{{selectedCard.img}}" alt="">
+        <img src="{{selectedCard.img}}" alt="" class="img-fluid">
       </div>
-      <div class="col-12 col-md-6 d-flex flex-column align-items-start">
+      <div class="col-12 col-md-6 d-flex flex-column align-items-center">
         <h2>{{ selectedCard.nome }}</h2>
         <p>{{selectedCard.disciplina}}</p>
-        <p>{{ selectedCard.descrizione }}</p>
-
-        <p>Vuoi prenotare una lezione con {{selectedCard.nome}}? Clicca qui 
+        <p [innerHTML]="selectedCard.descrizione"></p>
+        <p>{{selectedCard.nome}} è presente presso <strong>Elite Academy.</strong> Desideri un consulto? Clicca qui 
           <a href="https://wa.me/393792128351" target="_blank"> 
             <i class="fa-brands fa-whatsapp fa-bounce fa-2xl ms-3" style="color: #25d366;"></i>
           </a>
@@ -17,3 +16,4 @@
       </div>
     </div>
   </div>
+</body>

@@ -11,11 +11,15 @@ export class DataServiceService {
   private cognomeSource = new BehaviorSubject<string>('');
   private dataNascitaSource = new BehaviorSubject<string>('');
   private codiceFiscaleSource = new BehaviorSubject<string>('');
+  private numeroTelefonoSource = new BehaviorSubject<string>('');
+
 
   nome = this.nomeSource.asObservable();
   cognome = this.cognomeSource.asObservable();
   dataNascita = this.dataNascitaSource.asObservable();
   codiceFiscale = this.codiceFiscaleSource.asObservable();
+  numeroTelefono = this.numeroTelefonoSource.asObservable();
+
 
   constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) {
     this.caricaDatiDaFirestore();
@@ -34,6 +38,7 @@ export class DataServiceService {
             this.cognomeSource.next(data.cognome || '');
             this.dataNascitaSource.next(data.dataNascita || '');
             this.codiceFiscaleSource.next(data.codiceFiscale || '');
+            this.numeroTelefonoSource.next(data.numeroTelefono || '');
           }
         });
       }
@@ -84,6 +89,18 @@ export class DataServiceService {
 
         // Aggiorna il documento dell'utente in Firestore con il nuovo codice fiscale
         await userDoc.set({ codiceFiscale: nuovoCodiceFiscale }, { merge: true });
+      }
+    });
+  }
+
+  aggiornaNumeroTelefono(nuovoNumeroTelefono: string) {
+    this.afAuth.authState.subscribe(async user => {
+      if (user) {
+        const uid = user.uid;
+        const userDoc = this.firestore.collection('utenti').doc(uid);
+
+        // Aggiorna il documento dell'utente in Firestore con il nuovo numero di telefono
+        await userDoc.set({ numeroTelefono: nuovoNumeroTelefono }, { merge: true });
       }
     });
   }

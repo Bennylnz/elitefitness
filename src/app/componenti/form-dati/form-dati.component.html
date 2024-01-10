@@ -38,6 +38,15 @@
           Il codice fiscale è obbligatorio
         </div>       
       </div>
+
+      <div class="input-box text-center">        
+        <label for="numeroTelefono" class="form-label">Numero di telefono</label>
+        <input type="number" class="form-control" id="numeroTelefono" [(ngModel)]="nuovoNumeroTelefono" name="numeroTelefono" placeholder="Inserisci il tuo numero di telefono" required
+        (blur)="nuovoNumeroTelefonoTouched = true">
+        <div class="invalid-feedback" *ngIf="nuovoNumeroTelefonoTouched && myForm.controls.numeroTelefono?.errors?.required">
+          Il numero di telefono è obbligatorio
+        </div>       
+      </div>
       
       <div class="input-box text-center"> 
         <label for="photo" class="form-label">Foto</label>       

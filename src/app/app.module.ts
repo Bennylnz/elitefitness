@@ -25,6 +25,10 @@ import { LoadingInterceptor } from './loading.interceptor';
 import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/dettaglio-istruttore.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AuthService } from './shared/services/auth.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+
+
  
 
 
@@ -44,6 +48,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FooterComponent } from './componenti/footer/footer.component';
 import { FormModificaComponent } from './componenti/form-modifica/form-modifica.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 
@@ -89,7 +95,11 @@ import { FormModificaComponent } from './componenti/form-modifica/form-modifica.
     provideDatabase(() => getDatabase()),
     ToastrModule.forRoot(),
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule
    
   ],
   providers: [

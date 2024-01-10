@@ -11,7 +11,7 @@ swiper-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px !important;
+    width: 250px !important;
     margin-left: 50px;
     margin-right: 0px !important;
     padding: 0px !important;
@@ -30,7 +30,7 @@ swiper-container {
       font-family: "museo-slab" , serif;
       display: flex;
       height: 380px;
-      width: 200px;
+      width: 250px;
       background-color: #444249;
       border-radius: 10px;
       transition: 0.4s ease-out;
