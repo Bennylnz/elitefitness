@@ -4,7 +4,7 @@
     <form class="was-validated" (ngSubmit)="onSubmit()" #myForm="ngForm">
       
       <div class="input-box text-center">
-        <label for="newName" class="form-label">Nome</label>
+        <label for="newName" class="form-label">Nome e Cognome</label>
         <input type="text" class="form-control" id="newName" [(ngModel)]="newName" name="newName" placeholder="Inserisci il tuo nome" required
         (blur)="newNameTouched = true">
         <div class="invalid-feedback" *ngIf="newNameTouched && myForm.controls.newName?.errors?.required">
@@ -12,14 +12,7 @@
         </div>        
       </div>
       
-      <div class="input-box text-center">
-        <label for="cognome" class="form-label">Cognome</label>
-        <input type="text" class="form-control" id="cognome" [(ngModel)]="nuovoCognome" name="cognome" placeholder="Inserisci il tuo cognome" required
-        (blur)="nuovoCognomeTouched = true">
-        <div class="invalid-feedback" *ngIf="nuovoCognomeTouched && myForm.controls.cognome?.errors?.required">
-          Il cognome è obbligatorio
-        </div>        
-      </div>
+
       
       <div class="input-box text-center">        
         <label for="dataDiNascita" class="form-label">Data Di Nascita</label>

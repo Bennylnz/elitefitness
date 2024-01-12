@@ -43,7 +43,6 @@ export class AuthService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userEmailSource.next(user.email || ''); // Invia l'email all'observable
-        // ... codice esistente ...
       }
     });
 
@@ -109,20 +108,29 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
+    // Riferimento per la collezione "users"
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+  
+    // Riferimento per la collezione "utenti"
+    const utentiRef: AngularFirestoreDocument<any> = this.afs.doc(`utenti/${user.uid}`);
+  
     const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,      
+      emailVerified: user.emailVerified,
     };
-    return userRef.set(userData, {
-      merge: true,
-    });
-}
+  
+    // Aggiorna i dati nella collezione "users"
+    userRef.set(userData, { merge: true });
+  
+    // Aggiorna i dati nella collezione "utenti"
+    utentiRef.set(userData, { merge: true });
+  
+    return Promise.all([userRef, utentiRef]);
+  }
+  
 
   // Sign out
   SignOut() {
@@ -140,9 +148,7 @@ export class AuthService {
     const profile = {
         displayName: displayName,
         photoURL: user.photoURL,
-    };
-
-  
+    }; 
 
     await user.updateProfile(profile);
     this.SetUserData(user);

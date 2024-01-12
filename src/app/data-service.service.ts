@@ -7,16 +7,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataServiceService {
-  private nomeSource = new BehaviorSubject<string>('');
-  private cognomeSource = new BehaviorSubject<string>('');
-  private dataNascitaSource = new BehaviorSubject<string>('');
+  private nomeSource = new BehaviorSubject<string>(''); 
+  private dataDiNascitaSource = new BehaviorSubject<string>('');
   private codiceFiscaleSource = new BehaviorSubject<string>('');
   private numeroTelefonoSource = new BehaviorSubject<string>('');
 
 
   nome = this.nomeSource.asObservable();
-  cognome = this.cognomeSource.asObservable();
-  dataNascita = this.dataNascitaSource.asObservable();
+  
+  dataDiNascita = this.dataDiNascitaSource.asObservable();
   codiceFiscale = this.codiceFiscaleSource.asObservable();
   numeroTelefono = this.numeroTelefonoSource.asObservable();
 
@@ -24,6 +23,8 @@ export class DataServiceService {
   constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) {
     this.caricaDatiDaFirestore();
   }
+
+  
 
   private async caricaDatiDaFirestore() {
     this.afAuth.authState.subscribe(async user => {
@@ -34,9 +35,8 @@ export class DataServiceService {
         // Recupera i dati dal documento dell'utente in Firestore
         userDoc.valueChanges().subscribe((data: any) => {
           if (data) {
-            this.nomeSource.next(data.nome || '');
-            this.cognomeSource.next(data.cognome || '');
-            this.dataNascitaSource.next(data.dataNascita || '');
+            this.nomeSource.next(data.nome || '');            
+            this.dataDiNascitaSource.next(data.dataDiNascita || '');
             this.codiceFiscaleSource.next(data.codiceFiscale || '');
             this.numeroTelefonoSource.next(data.numeroTelefono || '');
           }
@@ -57,26 +57,15 @@ export class DataServiceService {
     });
   }
 
-  aggiornaCognome(nuovoCognome: string) {
-    this.afAuth.authState.subscribe(async user => {
-      if (user) {
-        const uid = user.uid;
-        const userDoc = this.firestore.collection('utenti').doc(uid);
 
-        // Aggiorna il documento dell'utente in Firestore con il nuovo cognome
-        await userDoc.set({ cognome: nuovoCognome }, { merge: true });
-      }
-    });
-  }
-
-  aggiornaDataNascita(nuovaDataNascita: string) {
+  aggiornaDataNascita(nuovaDataDiNascita: string) {
     this.afAuth.authState.subscribe(async user => {
       if (user) {
         const uid = user.uid;
         const userDoc = this.firestore.collection('utenti').doc(uid);
 
         // Aggiorna il documento dell'utente in Firestore con la nuova data di nascita
-        await userDoc.set({ dataNascita: nuovaDataNascita }, { merge: true });
+        await userDoc.set({ dataDiNascita: nuovaDataDiNascita }, { merge: true });
       }
     });
   }

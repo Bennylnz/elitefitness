@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class NavbarComponent {
   userDisplayName: string;
-  userCognome: string;
+ 
   photoURL: string;
   
   constructor(
@@ -29,7 +29,7 @@ export class NavbarComponent {
       if (user) {
         const uid = user.uid;
         this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
-          this.userCognome = userData['cognome'];
+        
           this.photoURL = userData['photoURL'];
         })
         this.firestore.collection('users').doc(uid).valueChanges().subscribe(userData => {

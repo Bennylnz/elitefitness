@@ -19,7 +19,7 @@ import { finalize } from 'rxjs/operators';
 export class FormDatiComponent {
 
   nomeFormControl = new FormControl('', [Validators.required]);
-  cognomeFormControl = new FormControl('', [Validators.required]);
+ 
   codiceFiscaleFormControl = new FormControl('', [Validators.required, Validators.minLength(11)]);
   dataDiNascitaFormControl = new FormControl('', [Validators.required]);
   numeroTelefonoFormControl = new FormControl('', [Validators.required]);
@@ -29,9 +29,7 @@ export class FormDatiComponent {
   newName: string = '';
   newNameTouched: boolean = false;
 
-  nuovoCognome: string = '';
-  nuovoCognomeTouched: boolean = false;
-
+  
   nuovaDataDiNascita: string = '';
   nuovaDataDiNascitaTouched: boolean = false;
 
@@ -63,9 +61,7 @@ export class FormDatiComponent {
     if (this.nuovoCodiceFiscale && this.nuovoCodiceFiscale.length >= 11) {
       if (this.newName.trim() !== '') {
         this.authService.UpdateProfile(this.newName.trim());
-      }
-
-      this.dataService.aggiornaCognome(this.nuovoCognome);
+      }      
       this.dataService.aggiornaDataNascita(this.nuovaDataDiNascita);
       this.dataService.aggiornaCodiceFiscale(this.nuovoCodiceFiscale);
       this.dataService.aggiornaNumeroTelefono(this.nuovoNumeroTelefono);

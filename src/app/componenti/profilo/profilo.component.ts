@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./profilo.component.css']
 })
 export class ProfiloComponent implements OnInit {
-  cognome: string;
+ 
   dataDiNascita: string;
   codiceFiscale: string;
   numeroTelefono: string;
@@ -29,7 +29,7 @@ export class ProfiloComponent implements OnInit {
   utentiData: any[] = [];
 
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['displayName', 'cognome', 'email', 'uid']; // Add more columns if needed
+  displayedColumns: string[] = ['displayName',  'email', 'uid']; // Add more columns if needed
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -47,11 +47,8 @@ export class ProfiloComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.cognome.subscribe((nuovoCognome: string) => {
-      this.cognome = nuovoCognome;
-    });
-  
-    this.dataService.dataNascita.subscribe((nuovaDataDiNascita: string) => {
+    
+    this.dataService.dataDiNascita.subscribe((nuovaDataDiNascita: string) => {
       this.dataDiNascita = nuovaDataDiNascita;
     });
   
@@ -174,7 +171,6 @@ export class ProfiloComponent implements OnInit {
     // Reimposta lo stato di modifica
     this.campoInModifica = '';
   }
-
   async updateDisplayName() {
     const user = this.afAuth.currentUser;
   
@@ -189,13 +185,19 @@ export class ProfiloComponent implements OnInit {
   
         // Aggiorna anche il displayName in Firestore, se necessario
         const uid = (await user).uid;
+  
+        // Aggiorna la tabella "users"
         await this.firestore.collection('users').doc(uid).update({ displayName: this.valoreModificato });
+  
+        // Aggiorna la tabella "utenti" (Assicurati che la tabella "utenti" abbia un campo "displayName")
+        await this.firestore.collection('utenti').doc(uid).update({ displayName: this.valoreModificato });
       } catch (error) {
         console.error('Errore durante l\'aggiornamento del displayName:', error);
         this.toastr.error('Si è verificato un errore durante l\'aggiornamento del nome');
       }
     }
   }
+  
 
   async updateDataOnFirestore(field: string) {
     const user = this.afAuth.currentUser;
@@ -220,6 +222,8 @@ export class ProfiloComponent implements OnInit {
           'numeroTelefono': 'numeroTelefono'
           // Aggiungi altri campi se necessario
         };
+
+        
   
         const firestoreField = fieldMapping[field];
   
@@ -227,6 +231,9 @@ export class ProfiloComponent implements OnInit {
           // Se esiste un mapping, aggiorna il campo su Firestore
           const updateData = {};
           updateData[firestoreField] = this.valoreModificato;
+
+          // Aggiorna la tabella "users"
+          await this.firestore.collection('users').doc(uid).update(updateData);
   
           await this.firestore.collection('utenti').doc(uid).update(updateData);
   
