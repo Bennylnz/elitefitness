@@ -47,7 +47,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FooterComponent } from './componenti/footer/footer.component';
-import { FormModificaComponent } from './componenti/form-modifica/form-modifica.component';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 
@@ -70,7 +70,7 @@ import {MatSortModule} from '@angular/material/sort';
     SpinnerComponent,
     DettaglioIstruttoreComponent,
     FooterComponent,
-    FormModificaComponent,
+   
    
     
   ],

@@ -21,6 +21,9 @@ export class ProfiloComponent implements OnInit {
   numeroTelefono: string;
   photoURL: string;  // Aggiunta variabile per l'URL dell'immagine
 
+  campoInModifica: string = ''; // Variabile per tenere traccia di quale campo viene modificato
+  valoreModificato: string = ''; // Variabile per memorizzare il valore modificato
+
   isUserWithEmailAllowed: boolean = false;
   users: any[] = []; // Aggiungi un array per memorizzare i dati degli utenti
   utentiData: any[] = [];
@@ -44,7 +47,6 @@ export class ProfiloComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Subscribe to changes in cognome, dataNascita, and codiceFiscale
     this.dataService.cognome.subscribe((nuovoCognome: string) => {
       this.cognome = nuovoCognome;
     });
@@ -134,4 +136,107 @@ export class ProfiloComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+
+  modificaDato(campo: string) {
+    this.campoInModifica = campo;
+    this.valoreModificato = this[campo]; 
+    const nuovoValore = prompt(`Modifica ${campo}:`, this[campo]);
+
+    if (nuovoValore !== null) {
+      // L'utente non ha annullato il prompt
+      this.valoreModificato = nuovoValore;
+      this.salvaDatoModificato();
+    } else {
+      // L'utente ha annullato il prompt
+      this.campoInModifica = ''; // Reimposta lo stato di modifica
+    }
+  }
+
+  salvaDatoModificato() {
+    // Aggiorna il campo specifico con il valore modificato
+    switch (this.campoInModifica) {
+      case 'displayName':
+        this.updateDisplayName();
+        break;
+      case 'dataDiNascita':
+        this.updateDataOnFirestore('dataDiNascita');
+        break;
+      case 'codiceFiscale':
+        this.updateDataOnFirestore('codiceFiscale');
+        break;
+      case 'numeroTelefono':
+        this.updateDataOnFirestore('numeroTelefono');
+        break;
+      // Aggiungi altri casi se necessario per altri campi
+    }
+
+    // Reimposta lo stato di modifica
+    this.campoInModifica = '';
+  }
+
+  async updateDisplayName() {
+    const user = this.afAuth.currentUser;
+  
+    if (user) {
+      try {
+        await (await user).updateProfile({
+          displayName: this.valoreModificato
+        });
+  
+        // Aggiornamento riuscito
+        this.toastr.success('Il nome è stato aggiornato con successo');
+  
+        // Aggiorna anche il displayName in Firestore, se necessario
+        const uid = (await user).uid;
+        await this.firestore.collection('users').doc(uid).update({ displayName: this.valoreModificato });
+      } catch (error) {
+        console.error('Errore durante l\'aggiornamento del displayName:', error);
+        this.toastr.error('Si è verificato un errore durante l\'aggiornamento del nome');
+      }
+    }
+  }
+
+  async updateDataOnFirestore(field: string) {
+    const user = this.afAuth.currentUser;
+  
+    if (user) {
+      try {
+        // Aggiorna il campo specifico nel profilo utente
+        await (await user).updateProfile({
+          [field]: this.valoreModificato
+        });
+  
+        // Aggiornamento riuscito nel profilo utente
+        this.toastr.success(`${field} è stato aggiornato con successo`);
+  
+        // Aggiorna anche il campo in Firestore
+        const uid = (await user).uid;
+  
+        // Utilizza un oggetto per mappare il campo da aggiornare nel corrispondente campo su Firestore
+        const fieldMapping = {
+          'dataDiNascita': 'dataDiNascita',
+          'codiceFiscale': 'codiceFiscale',
+          'numeroTelefono': 'numeroTelefono'
+          // Aggiungi altri campi se necessario
+        };
+  
+        const firestoreField = fieldMapping[field];
+  
+        if (firestoreField) {
+          // Se esiste un mapping, aggiorna il campo su Firestore
+          const updateData = {};
+          updateData[firestoreField] = this.valoreModificato;
+  
+          await this.firestore.collection('utenti').doc(uid).update(updateData);
+  
+        }
+      } catch (error) {
+  
+        this.toastr.error(`Si è verificato un errore durante l'aggiornamento di ${field}`);
+      }
+    }
+  }
+  
+  
 }
