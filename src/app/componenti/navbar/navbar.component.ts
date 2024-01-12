@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class NavbarComponent {
   userDisplayName: string;
  
-  photoURL: string;
+  fotoURL: string;
   
   constructor(
     public authService: AuthService,
@@ -30,7 +30,7 @@ export class NavbarComponent {
         const uid = user.uid;
         this.firestore.collection('utenti').doc(uid).valueChanges().subscribe(userData => {
         
-          this.photoURL = userData['photoURL'];
+          this.fotoURL = userData['fotoURL'];
         })
         this.firestore.collection('users').doc(uid).valueChanges().subscribe(userData => {
           this.userDisplayName = userData['displayName'];

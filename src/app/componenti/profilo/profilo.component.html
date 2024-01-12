@@ -1,106 +1,116 @@
 <app-navbar></app-navbar>
-
-<!-- Main content -->
-<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4  d-flex flex-column align-items-center justify-content-start">
-  <div class="inner-adjust">
-    <!-- Show user data when logged in -->
-
-        <div class="row" *ngIf="authService.userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <div class="media-body">
-                <div class="d-flex justify-content-center">
-                  <img class="profileImg" *ngIf="photoURL" [src]="photoURL" alt="Foto Profilo">
-                </div>
-                <h1 class="titleName"><strong>{{ user.displayName | titlecase }}</strong>
-                  <button class="btn" (click)="modificaDato('displayName')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
-                </h1>
-                <p class="titleSurname">Studente</p>
-
-                <p>Data di nascita: {{ dataDiNascita | date:'dd/MM/yyyy' }}  
-                  <button class="btn" (click)="modificaDato('dataDiNascita')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
-                </p>
-
-                <p>Codice fiscale: {{ codiceFiscale | uppercase }} 
-                  <button class="btn" (click)="modificaDato('codiceFiscale')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
-                </p>
-
-                
-                <p>Email: <strong>{{ user.email }}</strong></p>
-
-
-                <p>Numero di telefono : +39 {{ numeroTelefono }}  
-                  <button class="btn" (click)="modificaDato('numeroTelefono')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
-                </p>
-
-
-                <p>Email Verificata: <strong>{{ user.emailVerified == true ? 'Hai già verificato la tua E-mail' : 'Devi verificare la tua E-mail'  }}</strong> <button class="btn btn-light rounded-pill ms-3 btn-delete" *ngIf="user.emailVerified == false" (click)="SendVerificationMail()">Verifica e-mail</button></p>  
-                
-                <div class="buttons d-flex justify-content-center">
-                  <button type="button" class="btn btn-light rounded-pill ms-3 btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Elimina Profilo
-                  </button>
-                </div>
-
-                <!-- Button trigger modal -->
-                  
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina account</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-dark">
-                          Sei sicuro di voler eliminare il tuo account?
-                        </div>
-                        <div class="modal-footer">
-                          <button (click)="deleteAccount()" class="btn btn-danger" data-bs-dismiss="modal">Elimina account</button>
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                        </div>
-                      </div>
+<body>
+  <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4  d-flex flex-column align-items-center justify-content-start">
+    <div class="inner-adjust">
+      <!-- Show user data when logged in -->
+      
+      <div class="row" *ngIf="authService.userData as user">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <div class="d-flex justify-content-center">
+                <img class="profileImg" *ngIf="fotoURL" [src]="fotoURL" alt="Foto Profilo">
+              </div>
+              <h1 class="titleName"><strong>{{ user.displayName | titlecase }}</strong>
+                <button class="btn" (click)="modificaDato('displayName')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
+              </h1>
+              <p class="titleSurname">Studente</p>
+              
+              <p>Data di nascita: {{ dataDiNascita | date: 'dd/MM/yyyy' }}  
+                <button class="btn" (click)="modificaDato('dataDiNascita')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
+              </p>
+              
+              <p>Codice fiscale: {{ codiceFiscale | uppercase }} 
+                <button class="btn" (click)="modificaDato('codiceFiscale')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
+              </p>
+              
+              
+              <p>Email: <strong>{{ user.email }}</strong></p>
+              
+              
+              <p>Numero di telefono : +39 {{ numeroTelefono }}  
+                <button class="btn" (click)="modificaDato('numeroTelefono')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
+              </p>
+              
+              
+              <p>Email Verificata: <strong>{{ user.emailVerified == true ? 'Hai già verificato la tua E-mail' : 'Devi verificare la tua E-mail'  }}</strong> <button class="btn btn-light rounded-pill ms-3 btn-verify" *ngIf="user.emailVerified == false" (click)="SendVerificationMail()">Verifica e-mail</button></p>  
+              
+              <div class="buttons d-flex justify-content-center">
+                <button type="button" class="btn btn-light rounded-pill ms-3 btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Elimina Profilo
+                </button>
+              </div>
+              
+              <!-- Button trigger modal -->
+              
+              
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina account</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                  </div>
-
-
-
-                    <!-- Tabella admin con tutti gli iscritti -->
-
-                    <mat-form-field *ngIf="isUserWithEmailAllowed" class="example-full-width">
-                      <input matInput (keyup)="applyFilter($event)" placeholder="Cerca">
-                    </mat-form-field>
-    
-                    <div *ngIf="isUserWithEmailAllowed" class="mt-5">
-                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                      
-                        <ng-container matColumnDef="displayName">
-                          <th mat-header-cell *matHeaderCellDef>Nome e Cognome</th>
-                          <td mat-cell *matCellDef="let user">{{ user.displayName }}</td>
-                        </ng-container>
-    
-    
-                        <ng-container matColumnDef="email">
-                          <th mat-header-cell *matHeaderCellDef>Email</th>
-                          <td mat-cell *matCellDef="let user">{{ user.email }}</td>
-                        </ng-container>
-    
-                        <ng-container matColumnDef="uid">
-                          <th mat-header-cell *matHeaderCellDef>ID User</th>
-                          <td mat-cell *matCellDef="let user">{{ user.uid }}</td>
-                        </ng-container>                   
-                     
-    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                      </table>
-    
-                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+                    <div class="modal-body text-dark">
+                      Sei sicuro di voler eliminare il tuo account?
+                    </div>
+                    <div class="modal-footer">
+                      <button (click)="deleteAccount()" class="btn btn-danger" data-bs-dismiss="modal">Elimina account</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              
+              
+              <!-- Tabella admin con tutti gli iscritti -->
+              <div *ngIf="isUserWithEmailAllowed" class="d-flex flex-column justify-content-center mt-5">
+                <mat-form-field  class="example-full-width">
+                  <input matInput (keyup)="applyFilter($event)" placeholder="Cerca">
+                </mat-form-field>
+                
+                <div class="">
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    
+                    <ng-container matColumnDef="displayName">
+                      <th mat-header-cell *matHeaderCellDef>Nome e Cognome</th>
+                      <td mat-cell *matCellDef="let user">{{ user.displayName }}</td>
+                    </ng-container>    
+                    
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef>Email</th>
+                      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+                    </ng-container>           
+                    
+                    <ng-container matColumnDef="dataDiNascita">
+                      <th mat-header-cell *matHeaderCellDef>Data di nascita</th>
+                      <td mat-cell *matCellDef="let user">{{ user.dataDiNascita | date: 'dd/MM/yyyy' }}</td>
+                    </ng-container> 
+                    
+                    <ng-container matColumnDef="codiceFiscale">
+                      <th mat-header-cell *matHeaderCellDef>Codice Fiscale</th>
+                      <td mat-cell *matCellDef="let user">{{ user.codiceFiscale }}</td>
+                    </ng-container>  
+                    
+                    <ng-container matColumnDef="numeroTelefono">
+                      <th mat-header-cell *matHeaderCellDef>Numero di telefono</th>
+                      <td mat-cell *matCellDef="let user">{{ user.numeroTelefono }}</td>
+                    </ng-container>
+                    
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+                </div>
+              </div>
             </div>
           </div>
-        </main>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

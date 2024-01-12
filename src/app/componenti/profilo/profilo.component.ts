@@ -19,7 +19,7 @@ export class ProfiloComponent implements OnInit {
   dataDiNascita: string;
   codiceFiscale: string;
   numeroTelefono: string;
-  photoURL: string;  // Aggiunta variabile per l'URL dell'immagine
+  fotoURL: string;  // Aggiunta variabile per l'URL dell'immagine
 
   campoInModifica: string = ''; // Variabile per tenere traccia di quale campo viene modificato
   valoreModificato: string = ''; // Variabile per memorizzare il valore modificato
@@ -29,7 +29,7 @@ export class ProfiloComponent implements OnInit {
   utentiData: any[] = [];
 
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['displayName',  'email', 'uid']; // Add more columns if needed
+  displayedColumns: string[] = ['displayName',  'email' , 'dataDiNascita' , 'codiceFiscale' , 'numeroTelefono']; // Add more columns if needed
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -64,7 +64,7 @@ export class ProfiloComponent implements OnInit {
       if (user) {
         const uid = user.uid;
         this.firestore.collection('utenti').doc(uid).valueChanges().subscribe((userData: any) => {
-          this.photoURL = userData['photoURL'];
+          this.fotoURL = userData['fotoURL'];
         });
       }
     });
@@ -75,21 +75,11 @@ export class ProfiloComponent implements OnInit {
   
       if (this.isUserWithEmailAllowed) {
         // Retrieve data from the 'users' collection
-        this.firestore.collection('users').valueChanges().subscribe((data: any[]) => {
+        this.firestore.collection('utenti').valueChanges().subscribe((data: any[]) => {
           this.dataSource.data = data;
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-        });
-  
-        // Retrieve data from the 'utenti' collection
-        this.afAuth.authState.subscribe((user) => {
-          if (user) {
-            const uid = user.uid;
-            this.firestore.collection('utenti').doc(uid).valueChanges().subscribe((userData) => {
-              this.utentiData = [userData];
-            });
-          }
-        });
+        });        
       }
     });
   }

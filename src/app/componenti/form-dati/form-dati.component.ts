@@ -18,8 +18,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class FormDatiComponent {
 
-  nomeFormControl = new FormControl('', [Validators.required]);
- 
+  nomeFormControl = new FormControl('', [Validators.required]); 
   codiceFiscaleFormControl = new FormControl('', [Validators.required, Validators.minLength(11)]);
   dataDiNascitaFormControl = new FormControl('', [Validators.required]);
   numeroTelefonoFormControl = new FormControl('', [Validators.required]);
@@ -85,7 +84,7 @@ export class FormDatiComponent {
                   const uid = user.uid;
                   const userDoc = this.firestore.collection('utenti').doc(uid);
 
-                  userDoc.set({ photoURL: this.downloadURL }, { merge: true })
+                  userDoc.set({ fotoURL: this.downloadURL }, { merge: true })
                     .then(() => {
                       console.log('URL dell\'immagine salvato nel Firestore.');
                     })

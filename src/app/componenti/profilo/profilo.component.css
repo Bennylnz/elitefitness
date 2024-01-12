@@ -1,15 +1,19 @@
+body{
+    background-color: var(--grey);
+    color: white;
+}
+
+main{
+    padding-top: 75px;
+}
+
 .profileImg{
     border-radius: 50%;
     width: 230px;
     height: 230px;
-    border: 5px solid white;
-   
+    border: 5px solid white;   
 }
 
-main{
-    background-color: var(--grey);
-    color: white;
-}
 
 .titleName{
     margin-bottom: 0px;
@@ -20,16 +24,19 @@ main{
     font-weight: bold;
     margin-bottom: 25px;
 }
-main{
-    padding-top: 75px;
-}
 
 .buttons{
     margin-top: 35px;
 }
 
 .btn-delete{
-    font-weight:bold
+    font-weight:bold;
+    width: 100%;
+}
+
+.btn-verify{
+    font-weight:bold;
+    
 }
 
 .btn-update , .btn-delete{
