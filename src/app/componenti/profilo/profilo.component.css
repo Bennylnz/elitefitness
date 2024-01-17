@@ -5,6 +5,8 @@ body{
 
 main{
     padding-top: 75px;
+    background-color: var(--grey);
+
 }
 
 .profileImg{

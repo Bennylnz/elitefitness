@@ -9,6 +9,7 @@ import { ProfiloComponent } from './componenti/profilo/profilo.component';
 import { FormDatiComponent } from './componenti/form-dati/form-dati.component';
 import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/dettaglio-istruttore.component';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { BlogComponent } from './componenti/blog/blog.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
     {path: 'profilo', component: ProfiloComponent , canActivate: [AuthGuard]},
     {path: 'datipersonali', component: FormDatiComponent ,canActivate: [AuthGuard] },    
     {path: 'dettaglio/:id', component: DettaglioIstruttoreComponent },
+    {path: 'blog', component: BlogComponent },    
+
 ];
 
 @NgModule({

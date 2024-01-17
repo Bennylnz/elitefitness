@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DettaglioIstruttoreComponent } from '../app/componenti/dettaglio-istruttore/dettaglio-istruttore.component';
+import { DettaglioIstruttoreComponent } from '../../componenti/dettaglio-istruttore/dettaglio-istruttore.component';
 
 @Injectable({
   providedIn: 'root'

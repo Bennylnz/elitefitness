@@ -2,15 +2,15 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DataServiceService } from 'src/app/data-service.service';
+import { DataServiceService } from 'src/app/shared/services/data-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { ModificaDatoDialogComponent } from '../modifica-dato-dialog/modifica-dato-dialog.component';
-
+import { EditProfilePictureDialogComponent } from '../edit-profile-picture-dialog/edit-profile-picture-dialog.component';
 
 @Component({
   selector: 'app-profilo',
@@ -32,7 +32,7 @@ export class ProfiloComponent implements OnInit {
   utentiData: any[] = [];
 
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['displayName',  'email' , 'dataDiNascita' , 'codiceFiscale' , 'numeroTelefono']; // Add more columns if needed
+  displayedColumns: string[] = ['displayName',  'email' , 'dataDiNascita' , 'codiceFiscale' , 'numeroTelefono', 'emailVerified']; // Add more columns if needed
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -90,7 +90,6 @@ export class ProfiloComponent implements OnInit {
   
 
   private isAllowedEmail(email: string): boolean {
-    // Aggiungi la tua logica per determinare se l'email dell'utente è consentita
     return email === 'bennylanza@gmail.com';
   }
 
@@ -264,6 +263,23 @@ export class ProfiloComponent implements OnInit {
       }
     }
   }
+
+  editProfilePicture() {
+    // Open a dialog or implement your logic to allow users to edit their profile picture
+    const dialogRef = this.dialog.open(EditProfilePictureDialogComponent, {
+      width: '400px',
+      data: { fotoURL: this.fotoURL }
+    });
+
+    dialogRef.afterClosed().subscribe((newFotoURL: string) => {
+      if (newFotoURL) {
+        // If a new photo URL is received, update the component's fotoURL
+        this.fotoURL = newFotoURL;
+        // You may also want to update the photo URL in your database
+      }
+    });
+  }
+
   
   
 }

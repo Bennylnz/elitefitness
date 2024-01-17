@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<body class="mt-5">
+  <div class="wrapper" *ngIf="isUserWithEmailAllowed">
+    <h1>Inserisci un nuovo articolo</h1>
+    <mat-form-field>
+      <mat-label>Titolo:</mat-label>
+      <input matInput type="text" id="title" [(ngModel)]="blogTitle" >
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Descrizione:</mat-label>
+      <textarea matInput type="text" id="description" [(ngModel)]="blogDescription"></textarea>
+    </mat-form-field>  
+    
+    <label for="photo">Immagine:</label>
+    <input type="file" id="photo" (change)="gestisciFileInput($event.target.files)" />
+    
+    <button (click)="salvaArticolo()">Salva</button>
+  </div> 
+  
+  <div class="container d-flex justify-content-evenly align-items-center mt-5">
+    <div *ngFor="let articolo of articoli | async">
+      <div class="card">
+        <img [src]="articolo.photo" alt="Immagine articolo" *ngIf="articolo.photo" />
+        <div class="card-body">
+          <h5 class="card-title">{{ articolo.title }}</h5>
+          <p class="card-text">{{ articolo.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+<app-footer></app-footer>

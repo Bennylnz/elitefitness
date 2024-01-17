@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CarouselIstruttoriService } from 'src/app/carousel-istruttori.service';
-import { DialogService } from '../../dialog.service';
+import { CarouselIstruttoriService } from 'src/app/shared/services/carousel-istruttori.service';
+import { DialogService } from '../../shared/services/dialog.service';
 
 
 @Component({

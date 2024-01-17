@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <body>
-  <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4  d-flex flex-column align-items-center justify-content-start">
+  <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 d-flex flex-column align-items-center justify-content-start">
     <div class="inner-adjust">
       <!-- Show user data when logged in -->
       
@@ -10,7 +10,11 @@
             <div class="media-body">
               <div class="d-flex justify-content-center">
                 <img class="profileImg" *ngIf="fotoURL" [src]="fotoURL" alt="Foto Profilo">
+                <button class="btn" (click)="editProfilePicture()">
+                  <i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+                </button>
               </div>
+
               <h1 class="titleName"><strong>{{ user.displayName | titlecase }}</strong>
                 <button class="btn" (click)="modificaDato('displayName')"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i></button>
               </h1>
@@ -97,6 +101,11 @@
                     <ng-container matColumnDef="numeroTelefono">
                       <th mat-header-cell *matHeaderCellDef>Numero di telefono</th>
                       <td mat-cell *matCellDef="let user">{{ user.numeroTelefono }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="emailVerified">
+                      <th mat-header-cell *matHeaderCellDef>Email verificata</th>
+                      <td mat-cell *matCellDef="let user">{{ user.emailVerified }}</td>
                     </ng-container>
                     
                     

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarouselIstruttoriService } from 'src/app/carousel-istruttori.service';
-import { DialogService } from '../../dialog.service';
+import { CarouselIstruttoriService } from 'src/app/shared/services/carousel-istruttori.service';
+import { DialogService } from '../../shared/services/dialog.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

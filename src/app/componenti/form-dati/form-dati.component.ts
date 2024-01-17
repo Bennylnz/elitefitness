@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { DataServiceService } from 'src/app/data-service.service';
+import { DataServiceService } from 'src/app/shared/services/data-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireStorage } from '@angular/fire/compat/storage';

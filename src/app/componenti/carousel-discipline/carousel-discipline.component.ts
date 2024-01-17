@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CarouselDisciplineService } from 'src/app/carousel-discipline.service';
+import { CarouselDisciplineService } from 'src/app/shared/services/carousel-discipline.service';
 
 @Component({
   selector: 'app-carousel-discipline',
