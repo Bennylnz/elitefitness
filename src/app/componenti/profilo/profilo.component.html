@@ -36,7 +36,7 @@
               <p>Email Verificata: <strong>{{ user.emailVerified == true ? 'Hai già verificato la tua E-mail' : 'Devi verificare la tua E-mail'  }}</strong> <button class="btn btn-light rounded-pill ms-3 btn-verify" *ngIf="user.emailVerified == false" (click)="SendVerificationMail()">Verifica e-mail</button></p>  
               
               <div class="buttons d-flex justify-content-center">
-                <button type="button" class="btn btn-light rounded-pill ms-3 btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-light rounded-pill btn-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   Elimina Profilo
                 </button>
               </div>

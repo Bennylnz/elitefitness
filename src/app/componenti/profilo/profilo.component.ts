@@ -8,6 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModificaDatoDialogComponent } from '../modifica-dato-dialog/modifica-dato-dialog.component';
+
 
 @Component({
   selector: 'app-profilo',
@@ -41,7 +44,8 @@ export class ProfiloComponent implements OnInit {
     private firestore: AngularFirestore,
     private dataService: DataServiceService,
     private router: Router,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public dialog: MatDialog
   ) {
     this.dataSource = new MatTableDataSource<any>([]);
   }
@@ -127,19 +131,43 @@ export class ProfiloComponent implements OnInit {
 
   modificaDato(campo: string) {
     this.campoInModifica = campo;
-    this.valoreModificato = this[campo]; 
-    const nuovoValore = prompt(`Modifica ${campo}:`, this[campo]);
+    this.valoreModificato = this[campo];
+  
+    const dialogRef = this.dialog.open(ModificaDatoDialogComponent, {
+      width: '400px',
+      data: { campo: campo, valoreModificato: this.valoreModificato, title: this.getDialogTitle(campo) }
+    });
+  
+    dialogRef.afterClosed().subscribe((nuovoValore: string) => {
+      if (nuovoValore !== undefined) {
+        // L'utente ha inserito un nuovo valore nel dialog
+        this.valoreModificato = nuovoValore;
+        this.salvaDatoModificato();
+      } else {
+        // L'utente ha annullato il dialog
+        this.campoInModifica = ''; // Reimposta lo stato di modifica
+      }
+    });
+  }
+  
 
-    if (nuovoValore !== null) {
-      // L'utente non ha annullato il prompt
-      this.valoreModificato = nuovoValore;
-      this.salvaDatoModificato();
-    } else {
-      // L'utente ha annullato il prompt
-      this.campoInModifica = ''; // Reimposta lo stato di modifica
+  getDialogTitle(campo: string): string {
+    switch (campo) {
+      case 'displayName':
+        return 'nome e cognome';
+      case 'dataDiNascita':
+        return 'data di nascita';
+      case 'codiceFiscale':
+        return 'codice fiscale';
+      case 'numeroTelefono':
+        return 'numero di telefono';
+      // Aggiungi altri casi se necessario
+      default:
+        return campo; // Ritorna il campo originale se non c'è un match
     }
   }
-
+  
+  
   salvaDatoModificato() {
     // Aggiorna il campo specifico con il valore modificato
     switch (this.campoInModifica) {
@@ -161,6 +189,8 @@ export class ProfiloComponent implements OnInit {
     // Reimposta lo stato di modifica
     this.campoInModifica = '';
   }
+
+
   async updateDisplayName() {
     const user = this.afAuth.currentUser;
   

@@ -50,6 +50,7 @@ import { FooterComponent } from './componenti/footer/footer.component';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { ModificaDatoDialogComponent } from './componenti/modifica-dato-dialog/modifica-dato-dialog.component';
 
 
 
@@ -70,6 +71,7 @@ import {MatSortModule} from '@angular/material/sort';
     SpinnerComponent,
     DettaglioIstruttoreComponent,
     FooterComponent,
+    ModificaDatoDialogComponent,
    
    
     
