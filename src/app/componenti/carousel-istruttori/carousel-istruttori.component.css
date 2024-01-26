@@ -29,7 +29,7 @@ swiper-container {
     .card {
       font-family: "museo-slab" , serif;
       display: flex;
-      height: 380px;
+      height: 430px;
       width: 250px;
       background-color: #444249;
       border-radius: 10px;
@@ -60,8 +60,8 @@ swiper-container {
     .title {
       color: white;
       font-weight: bold;     
-      font-size: 25px;
-
+      font-size: 20px;
+      margin-bottom: -3px;
     }
 
     .fst-italic{
@@ -86,16 +86,18 @@ swiper-container {
     
     .bar {
       position: absolute;
-      top: 210px;
+      top: 260px;
       left: 20px;
       height: 5px;
-      width: 150px;
+      width: 200px;
+      border-radius: 25px;
     }
     
     .emptybar {
       background-color: #2e3033;
       width: 100%;
       height: 100%;
+      border-radius: 25px;
     }
     
     .filledbar {
@@ -107,16 +109,18 @@ swiper-container {
       background: rgb(153,0,0);
       background: linear-gradient(90deg, rgba(153,0,0,1) 30%, rgba(242,183,5,1) 70%);
       transition: 0.6s ease-out;
+      border-radius: 25px;
     }
     
     .card:hover .filledbar {
-      width: 150px;
+      width: 200px;
       transition: 0.4s ease-out;
+      border-radius: 25px;
     }
   
     img{
-      width: 200px;
-      height: 200px;
+      width: 160px;
+      height: 246px;
       margin-top: 10px;
       margin-bottom: 10px;
       

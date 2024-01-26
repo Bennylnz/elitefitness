@@ -11,8 +11,8 @@ export class DialogService {
 
   openPopup(istruttore: any): void {
     this.dialog.open(DettaglioIstruttoreComponent, {
-      width: '80vw',
-      height: '75vh',
+      width: '65vw',
+      height: '73vh',
       data: { istruttore },
       backdropClass: 'backdropBackground',
     });

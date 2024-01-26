@@ -5,7 +5,7 @@ body {
 }
 
 img {
-    max-height: 60vh; 
+    max-height: 65vh;
     border-radius: 20px;  
 }
 
@@ -14,3 +14,59 @@ img {
         overflow-y: visible;
     }
 }
+
+.container-foto{    
+    padding-left: 36px;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    
+}
+.container-testo{
+    padding-top: 25px;
+    height: 65vh; 
+    position: relative;
+    padding-right: 30px;  
+}
+
+.border-custom{
+    border-left: 10px solid var(--red);
+    margin-left: -25px;
+    margin-bottom: 24px;
+}
+
+.descr{
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 300;
+}
+.disciplina{
+    margin-bottom: 0px;
+}
+
+.disciplina , h2{
+    margin-left: 15px;
+}
+
+.click-box{
+    background-color: var(--yellow);
+    border-radius: 15px;
+    padding: 5px;
+    color: var(--grey);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 12px;    
+}
+
+.container-click{
+    margin-top: 90px;
+    border-left: 10px solid var(--yellow);
+    margin-left: -25px;
+    line-height: 21px;
+}
+
+.container-click2{    
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+

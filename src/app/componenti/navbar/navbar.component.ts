@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -23,7 +23,8 @@ export class NavbarComponent {
     return this.authService.isLoggedIn; 
   }
 
-  ngOnInit() {
+  ngOnInit(event: Event) {
+    this.checkScreenSize(); 
     // Recupera i dati dell'utente dal Firestore quando l'utente è autenticato
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -41,6 +42,19 @@ export class NavbarComponent {
     });
   }
 
+  isNavbarScrolled: boolean = false;
+  isDarkTheme: boolean = true;
+  isMobileView = false;  
+ 
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isNavbarScrolled = window.scrollY > 80;
+    this.isDarkTheme = !this.isNavbarScrolled;
+  }
+  
+  checkScreenSize() {
+    this.isMobileView = window.innerWidth < 768; // Imposta la larghezza a 768 px in base alle necessità del tuo design responsivo  
+  }
 
 }

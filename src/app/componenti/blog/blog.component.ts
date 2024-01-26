@@ -17,6 +17,9 @@ export class BlogComponent implements OnInit{
   downloadURL: string = '';
   articoli: Observable<any[]>;
   isUserWithEmailAllowed: boolean = false;
+  // Aggiungi questa variabile al tuo componente TypeScript
+mostraTutto: boolean = false;
+
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, public authService: AuthService,) {}
 

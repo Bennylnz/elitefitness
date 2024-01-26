@@ -1,20 +1,20 @@
-<app-navbar></app-navbar>
+  <app-navbar></app-navbar>   
+      <body>
+          <div class="wrapper">
+           <form>
+                  <h1>Reset Password</h1>
+                  <p class="text-center">Per favore, inserisci la tua mail per resettare la password.</p>
+                  <div class="input-box">
+                    <input type="email" class="formControl" placeholder="Email Address" #passwordResetEmail required>
+                      <i class='bx bxs-user'></i>
+                  </div>                 
+                  <button class="btn" (click)="authService.ForgotPassword(passwordResetEmail.value)">Reset</button>
+                  <div class="redirectToLogin mt-3 text-center">
+                    <a>Torna a <span class="redirect" routerLink="/login">Login</span></a>
+                  </div>
+                  
+                </form>
+          </div>
+      </body>
 
-<div class="displayTable mt-5">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Reset Password</h3>
-        <p class="text-center">Please enter your email address to request a password reset.</p>
-        <div class="formGroup">
-          <input type="email" class="formControl" placeholder="Email Address" #passwordResetEmail required>
-        </div>
-        <!-- Calling ForgotPassword from AuthService Api -->
-        <div class="formGroup">
-          <input type="submit" class="btn btnPrimary" value="Reset Password" (click)="authService.ForgotPassword(passwordResetEmail.value)">
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span>Go back to ? <span class="redirect" routerLink="/login">Log In</span></span>
-      </div>
-    </div>
-  </div>
+      <app-footer></app-footer>

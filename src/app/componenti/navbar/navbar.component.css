@@ -3,6 +3,12 @@ nav{
     background-color: var(--grey);
 }
 
+.navbar.scrolled {
+    background-color: var(--red); 
+    color: white;
+    transition: 0.4s;
+  }
+
 @media (max-width: 992px) {
  .navbar .navbar-collapse {
     text-align: center;

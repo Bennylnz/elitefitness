@@ -1,19 +1,25 @@
 <body>
-  <div class="container mt-5 d-flex align-items-center justify-content-center" *ngIf="selectedCard">
-    <div class="row w-100">
-      <div class="col-12 col-md-6 d-flex justify-content-center">
+  <div class="container d-flex align-items-center justify-content-center ps-0" *ngIf="selectedCard">
+    <div class="row w-100 align-items-start">
+      <div class="col-12 col-md-5 d-flex justify-content-start container-foto">
         <img src="{{selectedCard.img}}" alt="" class="img-fluid">
       </div>
-      <div class="col-12 col-md-6 d-flex flex-column align-items-center">
-        <h2>{{ selectedCard.nome }}</h2>
-        <p>{{selectedCard.disciplina}}</p>
-        <p [innerHTML]="selectedCard.descrizione"></p>
-        <p>{{selectedCard.nome}} è presente presso <strong>Elite Academy.</strong> Desideri un consulto? Clicca qui 
-          <a href="https://wa.me/393792128351" target="_blank"> 
-            <i class="fa-brands fa-whatsapp fa-bounce fa-2xl ms-3" style="color: #25d366;"></i>
+
+      <div class="col-12 col-md-7 d-flex flex-column align-items-end container-testo">
+        <div class="container d-flex flex-column justify-content-between w-100">
+        <div class="border-custom"> 
+        <h2 class="mb-0">{{ selectedCard.nome }}</h2>
+        <p class="fw-bold disciplina">{{selectedCard.disciplina | uppercase}}</p>
+      </div>
+        <p [innerHTML]="selectedCard.descrizione" class="descr"></p>
+        <div class="container-click">
+        <p class="container-click2">{{selectedCard.nome}} è presente presso <strong>Elite Academy.</strong><br>Desideri un consulto?
+          <a class="click-box" href="https://wa.me/393792128351" target="_blank">Clicca qui
           </a>
         </p>
       </div>
+      </div>
+    </div>
     </div>
   </div>
 </body>

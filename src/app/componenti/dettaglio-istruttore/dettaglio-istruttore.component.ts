@@ -15,7 +15,6 @@ export class DettaglioIstruttoreComponent implements OnInit {
   constructor(private route: ActivatedRoute, public carouselService : CarouselIstruttoriService, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-    this.selectedCard = this.data.istruttore;
-   
+    this.selectedCard = this.data.istruttore;   
   }
 }

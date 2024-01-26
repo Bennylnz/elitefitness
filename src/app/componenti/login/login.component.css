@@ -3,9 +3,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% );
-    background-size: cover;
-    background-position: center;
+   background-color: var(--grey);
 }
 .wrapper {
     width: 420px;

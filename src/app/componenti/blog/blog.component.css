@@ -14,7 +14,7 @@ body{
     border-radius: 8px;
     margin-bottom: 20px;
     overflow: hidden;
-    width: 300px;
+    width: 400px;
   }
   
   .card img {
@@ -25,4 +25,18 @@ body{
   .card-body {
     padding: 15px;
   }
+
+  .card-text {
+  max-height: 50px; /* Altezza massima del testo mostrato */
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* Aggiungi un'animazione per una transizione fluida */
+}
+
+.mostra-tutto {
+  max-height: none; /* Mostri tutto il testo quando la classe 'mostra-tutto' è presente */
+}
+
+.justify-content-evenly{
+  background-color: var(--grey);
+}
 

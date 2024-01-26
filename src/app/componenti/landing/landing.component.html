@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 
+    
 
-<div class="container-fluid mt-5 vh-100 d-flex justify-content-center align-items-center p-0 ">  
+<div class="container-fluid mt-custom vh-100 d-flex justify-content-center align-items-center p-0 ">  
     <div class="row w-100">
-        <div class="col-12 col-md-12 vh-100 ">
+        <div class="col-12 col-md-12 vh-100" id="video-container">
             <video #myVideo src="/assets/media/animazione1.mp4" type="video/mp4"  autoplay></video>
-
         </div>
     </div>
 </div>
@@ -25,8 +25,15 @@
 <app-carousel-istruttori id="istruttori"></app-carousel-istruttori>
 
 
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center pb-5">
+    <div class="row w-100 ">
+        <div class="col-12 col-md-12 vh-100 d-flex justify-content-start align-items-center text-white vision">
+            <h2 id="typed-output" class="w-50 mx-5"></h2>
+        </div>        
+    </div>
+ </div>
 
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center ">
+<!-- <div class="container-fluid vh-100 d-flex justify-content-center align-items-center ">
     <div class="row">
         <div class="col col-md-5 d-flex justify-content-center align-items-center text-white ms-5 vision">
             OFFRIRE ESPERIENZA D'ALLENAMENTO D'ELITE AD UN PREZZO ACCESSIBILE.
@@ -36,21 +43,16 @@
             <img src="https://picsum.photos/600" class="img-fluid" alt="">
         </div>
     </div>
- </div>
+ </div> -->
 
 
 <app-carousel-discipline id="corsi"></app-carousel-discipline>
 
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center ">
-    <div class="row">
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center text-white">
-            <img src="https://picsum.photos/600" class="img-fluid" alt="">
-        </div>
-        <div class="col-12 col-md-5 d-flex justify-content-center align-items-center text-white me-5 mission" >
-            CREARE UN NUOVO CONCETTO DI WELLNESS RENDENDO QUOTIDIANAMENTE ACCESSIBILI NOZIONI D’ECCELLENZA, FORMANDO NUOVE GENERAZIONI DI ATLETI E PROMUOVENDO UNA FILOSOFIA DI COMPETITIVITA' COSTRUTTIVA.
-        </div>
-    </div>
- </div>
+<div class="divider">
+
+</div>
+
+
 
 
 <app-footer></app-footer>
