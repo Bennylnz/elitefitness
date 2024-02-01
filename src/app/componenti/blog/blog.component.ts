@@ -18,7 +18,7 @@ export class BlogComponent implements OnInit{
   articoli: Observable<any[]>;
   isUserWithEmailAllowed: boolean = false;
   // Aggiungi questa variabile al tuo componente TypeScript
-mostraTutto: boolean = false;
+  mostraTutto: boolean = false;
 
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, public authService: AuthService,) {}

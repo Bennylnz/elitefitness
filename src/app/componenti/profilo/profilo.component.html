@@ -9,7 +9,7 @@
           <div class="media">
             <div class="media-body">
               <div class="d-flex justify-content-center">
-                <img class="profileImg" *ngIf="fotoURL" [src]="fotoURL" alt="Foto Profilo">
+                <img class="profileImg" *ngIf="fotoURL" [src]="fotoURL" alt="Foto Profilo" ngTilt>
                 <button class="btn" (click)="editProfilePicture()">
                   <i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
                 </button>
@@ -70,12 +70,12 @@
               
               
               <!-- Tabella admin con tutti gli iscritti -->
-              <div *ngIf="isUserWithEmailAllowed" class="d-flex flex-column justify-content-center mt-5">
+              <div *ngIf="isUserWithEmailAllowed" class="d-flex flex-column justify-content-center mt-5 mat-table-container">
                 <mat-form-field  class="example-full-width">
                   <input matInput (keyup)="applyFilter($event)" placeholder="Cerca">
                 </mat-form-field>
                 
-                <div class="">
+                <div class="mat-table-container">
                   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     
                     <ng-container matColumnDef="displayName">

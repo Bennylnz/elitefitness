@@ -29,6 +29,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 
 
+
  
 
 
@@ -53,6 +54,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { ModificaDatoDialogComponent } from './componenti/modifica-dato-dialog/modifica-dato-dialog.component';
 import { EditProfilePictureDialogComponent } from './componenti/edit-profile-picture-dialog/edit-profile-picture-dialog.component';
 import { BlogComponent } from './componenti/blog/blog.component';
+import {NgTiltModule} from '@geometricpanda/angular-tilt';
 
 
 
@@ -105,7 +107,8 @@ import { BlogComponent } from './componenti/blog/blog.component';
     MatTableModule,
     MatIconModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    NgTiltModule
    
   ],
   providers: [

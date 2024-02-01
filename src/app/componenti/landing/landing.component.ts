@@ -29,8 +29,6 @@ export class LandingComponent implements AfterViewInit {
 
     };
 
-    const typed = new Typed('#typed-output', options);
-
-  
+    const typed = new Typed('#typed-output', options);  
   }
 }

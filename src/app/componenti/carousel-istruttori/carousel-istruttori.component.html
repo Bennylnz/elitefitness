@@ -1,7 +1,7 @@
 <swiper-container class="mySwiper container-fluid" pagination="true" pagination-clickable="true" space-between="30"
     slides-per-view="auto">
     <swiper-slide *ngFor="let istruttore of carouselService.istruttori" >  
-      <div class="card d-flex align-items-center">
+      <div class="card d-flex align-items-center" >
       <img src="{{istruttore.img}}" alt="">
       <div class="bar">
         <div class="emptybar"></div>
@@ -17,6 +17,7 @@
 </swiper-slide>
     
 </swiper-container>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 

@@ -45,3 +45,8 @@ main{
     padding: 6px 9px !important;
     font-size: smaller;
 }
+
+
+.mat-table-container {
+    overflow-x: auto;
+}
