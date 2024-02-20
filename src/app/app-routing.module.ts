@@ -10,11 +10,13 @@ import { FormDatiComponent } from './componenti/form-dati/form-dati.component';
 import { DettaglioIstruttoreComponent } from './componenti/dettaglio-istruttore/dettaglio-istruttore.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { BlogComponent } from './componenti/blog/blog.component';
+import { ArticoloDetailComponent } from './componenti/articolo-detail/articolo-detail.component';
 
 
 const routes: Routes = [
-    {path: '', component: LandingComponent, },
-    {path: '', redirectTo: 'landing', pathMatch:'full'},
+  {path: '', redirectTo: 'landing', pathMatch:'full'},
+  {path: 'landing', component: LandingComponent },
+  
     {path: 'login', component: LoginComponent},  
     {path: 'registrati', component: RegistratiComponent },    
     {path: 'passdimenticata', component: PassDimenticataComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
     {path: 'datipersonali', component: FormDatiComponent ,canActivate: [AuthGuard] },    
     {path: 'dettaglio/:id', component: DettaglioIstruttoreComponent },
     {path: 'blog', component: BlogComponent },    
+    {path: 'articoli/:id', component: ArticoloDetailComponent }
 
 ];
 

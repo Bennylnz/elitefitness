@@ -18,23 +18,36 @@
     <button (click)="salvaArticolo()">Salva</button>
   </div> 
   
-  <div class="container-fluid d-flex justify-content-evenly align-items-center">
-    <div *ngFor="let articolo of articoli | async">
-      <div class="card">
-        <img [src]="articolo.photo" alt="Immagine articolo" *ngIf="articolo.photo" />
-        <div class="card-body">
-          <h5 class="card-title">{{ articolo.title }}</h5>
-          <p class="card-text" [ngClass]="{'mostra-tutto': mostraTutto}">
-            {{ articolo.description }}
-          </p>
-          <div *ngIf="!mostraTutto && articolo.description.length > 50">
-            <button (click)="mostraTutto = true">Mostra tutto</button>
-          </div>
-          <button *ngIf="mostraTutto" (click)="mostraTutto = false">Mostra meno</button>
-        </div>
-      </div>
-    </div>
+
+  <div>
+    <img src="../../../assets/media/bannerHeader.png" alt="" class="banner-blog">
   </div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+    <h1 class="pb-5 m-0">I Nostri Articoli</h1>
+    <div *ngFor="let articolo of articoli | async" class="col-md-4">
+  <div class="blog-card">
+    <div class="blog-card-image">        
+      <img class="img" [src]="articolo.photo" alt="Immagine articolo" *ngIf="articolo.photo" (click)="showDetails(articolo)" >                
+    </div>
+    <div class="blog-table">
+        <h6 class="blog-category blog-text-success">News</h6>
+        <h4 class="blog-card-caption">{{ articolo.title }}</h4>
+        <div class="text-truncate-container">
+          <p class="blog-card-description"> {{ articolo.description }}</p>
+        </div>      
+        <div class="ftr">
+            <button (click)="showDetails(articolo)" class="btn">Mostra dettagli</button> 
+        </div>
+    </div>
+</div>
+</div>
+  </div>
+</div>
+
+
   
-  <app-footer></app-footer>
+<app-footer></app-footer>
 </body>

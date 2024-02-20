@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -17,11 +18,10 @@ export class BlogComponent implements OnInit{
   downloadURL: string = '';
   articoli: Observable<any[]>;
   isUserWithEmailAllowed: boolean = false;
-  // Aggiungi questa variabile al tuo componente TypeScript
-  mostraTutto: boolean = false;
 
 
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, public authService: AuthService,) {}
+
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     // Ottieni la lista degli articoli dal database Firebase
@@ -73,8 +73,13 @@ export class BlogComponent implements OnInit{
       photo: this.downloadURL || '', // Utilizza l'URL dell'immagine se disponibile
     };
 
+    const articoloId = this.db.createPushId(); // Genera un nuovo ID univoco
+    articolo['id'] = articoloId; // Assegna l'ID all'oggetto articolo
+
+
     // Salva l'articolo nel database Firebase
-    this.db.list('/articoli').push(articolo);
+    this.db.list('/articoli').set(articoloId, articolo); // Salva l'articolo con l'ID univoco come chiave
+
 
     // Resetta i campi dopo il salvataggio
     this.blogTitle = '';
@@ -88,4 +93,10 @@ export class BlogComponent implements OnInit{
       this.blogPhoto = files[0];
     }
   }
+
+  showDetails(articolo: any) {
+    
+    this.router.navigate(['/articoli', articolo.id]);
+  }
+  
 }

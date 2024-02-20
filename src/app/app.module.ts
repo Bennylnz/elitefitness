@@ -55,6 +55,7 @@ import { ModificaDatoDialogComponent } from './componenti/modifica-dato-dialog/m
 import { EditProfilePictureDialogComponent } from './componenti/edit-profile-picture-dialog/edit-profile-picture-dialog.component';
 import { BlogComponent } from './componenti/blog/blog.component';
 import {NgTiltModule} from '@geometricpanda/angular-tilt';
+import { ArticoloDetailComponent } from './componenti/articolo-detail/articolo-detail.component';
 
 
 
@@ -78,6 +79,7 @@ import {NgTiltModule} from '@geometricpanda/angular-tilt';
     ModificaDatoDialogComponent,
     EditProfilePictureDialogComponent,
     BlogComponent,
+    ArticoloDetailComponent,
    
    
     
