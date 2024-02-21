@@ -54,7 +54,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { ModificaDatoDialogComponent } from './componenti/modifica-dato-dialog/modifica-dato-dialog.component';
 import { EditProfilePictureDialogComponent } from './componenti/edit-profile-picture-dialog/edit-profile-picture-dialog.component';
 import { BlogComponent } from './componenti/blog/blog.component';
-import {NgTiltModule} from '@geometricpanda/angular-tilt';
+
 import { ArticoloDetailComponent } from './componenti/articolo-detail/articolo-detail.component';
 import { ImageUploadComponent } from './componenti/image-upload/image-upload.component';
 
@@ -112,7 +112,7 @@ import { ImageUploadComponent } from './componenti/image-upload/image-upload.com
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,
-    NgTiltModule
+    
    
   ],
   providers: [
