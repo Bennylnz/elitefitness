@@ -33,6 +33,21 @@
 }
   
 
+#typed-output{
+  margin-top: 270px;
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 992px) {
+  #typed-output{
+    margin-top: 0px;    
+  }
+
+  .divider{
+    display: none;
+  }
+}
+
 @media screen and (min-width: 1800px) {
     .img-promo {
         width: 100vw;      
@@ -78,6 +93,13 @@
     height: 200px;
   }
 
+  .accordion-button{
+    background-color: white !important;    
+  }
+
+  .accordion-body{
+    background-color: white !important;    
+  }
  
 
   

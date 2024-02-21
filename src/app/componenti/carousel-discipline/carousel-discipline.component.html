@@ -1,10 +1,12 @@
 <h1 class="text-center">I nostri corsi</h1>
 
 <swiper-container class="mySwiper" direction="vertical" pagination="true" pagination-clickable="true" mousewheel="true" space-between="20">
-  <swiper-slide class="ms-3 me-0" *ngFor="let disciplina of carouselServiceDiscipline.discipline"
-  [style.backgroundImage]="'url(' + disciplina.img + ')'">
-</swiper-slide>    
+  <swiper-slide 
+    class="ms-3 me-0" 
+    *ngFor="let disciplina of carouselServiceDiscipline.discipline"
+    [style.backgroundImage]="'url(' + disciplina.img + ')'">
+  </swiper-slide>    
 </swiper-container>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

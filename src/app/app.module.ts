@@ -56,6 +56,7 @@ import { EditProfilePictureDialogComponent } from './componenti/edit-profile-pic
 import { BlogComponent } from './componenti/blog/blog.component';
 import {NgTiltModule} from '@geometricpanda/angular-tilt';
 import { ArticoloDetailComponent } from './componenti/articolo-detail/articolo-detail.component';
+import { ImageUploadComponent } from './componenti/image-upload/image-upload.component';
 
 
 
@@ -80,6 +81,7 @@ import { ArticoloDetailComponent } from './componenti/articolo-detail/articolo-d
     EditProfilePictureDialogComponent,
     BlogComponent,
     ArticoloDetailComponent,
+    ImageUploadComponent,
    
    
     

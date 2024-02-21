@@ -1,23 +1,33 @@
 <app-navbar></app-navbar>
 <body class="mt-5">
-  <div class="wrapper" *ngIf="isUserWithEmailAllowed">
-    <h1>Inserisci un nuovo articolo</h1>
-    <mat-form-field>
-      <mat-label>Titolo:</mat-label>
-      <input matInput type="text" id="title" [(ngModel)]="blogTitle" >
-    </mat-form-field>
-    
-    <mat-form-field>
-      <mat-label>Descrizione:</mat-label>
-      <textarea matInput type="text" id="description" [(ngModel)]="blogDescription"></textarea>
-    </mat-form-field>  
-    
-    <label for="photo">Immagine:</label>
-    <input type="file" id="photo" (change)="gestisciFileInput($event.target.files)" />
-    
-    <button (click)="salvaArticolo()">Salva</button>
-  </div> 
-  
+  <div class="accordion" id="accordionExample" *ngIf="isUserWithEmailAllowed">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Inserisci un nuovo articolo
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+        <div class="accordion-body d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Titolo:</mat-label>
+            <input matInput type="text" id="title" [(ngModel)]="blogTitle" >
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Descrizione:</mat-label>
+            <textarea matInput type="text" id="description" [(ngModel)]="blogDescription"></textarea>
+          </mat-form-field>  
+          
+          <label for="photo">Immagine:</label>
+          <input type="file" id="photo" (change)="gestisciFileInput($event.target.files)" />
+          
+          <button class="btn" (click)="salvaArticolo()">Salva articolo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div>
     <img src="../../../assets/media/bannerHeader.png" alt="" class="banner-blog">

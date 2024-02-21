@@ -4,21 +4,36 @@
 
 <div class="container-fluid mt-custom vh-100 d-flex justify-content-center align-items-center p-0 ">  
     <div class="row w-100">
-        <div class="col-12 col-md-12 vh-100" id="video-container">
+        <div class="col-12 col-md-12 vh-100 p-0" id="video-container">
             <video #myVideo src="/assets/media/animazione1.mp4" type="video/mp4"  autoplay></video>
         </div>
     </div>
 </div>
 
 
-<div class="container-fluid d-flex justify-content-center align-items-center p-0 ">  
-    <div class="row w-100">
-        <div class="col-12 col-md-12 p-0 ">
-            <img src="../../../assets/media/promo.png" class="img-promo" alt="">
-        </div>
-    </div>
-</div>
 
+
+
+<div class="accordion" id="accordionExample" *ngIf="isUserWithEmailAllowed">
+    <div class="accordion-item ">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Inserisci una nuova promo
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+        <div class="accordion-body d-flex flex-column">
+            <app-image-upload  *ngIf="isUserWithEmailAllowed" (imageUploaded)="onImageUploaded($event)"></app-image-upload>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="imageUrl" class="d-flex flex-column align-items-center justify-content-center">
+    <img [src]="imageUrl" alt="Uploaded Image" class="promo"/>
+    <button class="btn text-white" *ngIf="isUserWithEmailAllowed"  (click)="deleteImage()">Elimina Promo</button>
+  </div>
+  
 
 
     
@@ -28,7 +43,7 @@
 <div class="container-fluid vh-100 d-flex justify-content-center align-items-center pb-5">
     <div class="row w-100 ">
         <div class="col-12 col-md-12 vh-100 d-flex justify-content-start align-items-center text-white vision">
-            <h2 id="typed-output" class="w-50 mx-5"></h2>
+            <h2 id="typed-output" class="w-50 h-50"></h2>
         </div>        
     </div>
  </div>

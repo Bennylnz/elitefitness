@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2 } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { ImageStateService } from 'src/app/shared/services/image-state.service';
 import Typed from 'typed.js';
 
 
@@ -10,7 +12,21 @@ import Typed from 'typed.js';
 export class LandingComponent implements AfterViewInit {
   @ViewChild('myVideo') myVideo: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  isUploading: boolean = false;
+  imageUrl: string | null = null;
+  isUserWithEmailAllowed: boolean = false;
+  
+  constructor(private renderer: Renderer2, private imageStateService: ImageStateService , private authService: AuthService) {}
+
+  ngOnInit() {
+       this.imageStateService.getImageUrl().subscribe((url) => {
+      this.imageUrl = url;
+    });
+
+    this.authService.userEmail.subscribe((email: string) => {
+      this.isUserWithEmailAllowed = this.isAllowedEmail(email);
+    });
+  }
 
   ngAfterViewInit() {
     this.renderer.setProperty(this.myVideo.nativeElement, 'autoplay', true);
@@ -30,5 +46,31 @@ export class LandingComponent implements AfterViewInit {
     };
 
     const typed = new Typed('#typed-output', options);  
+  }
+
+
+  isUserLoggedIn() : boolean{
+    return this.authService.isLoggedIn; 
+  }
+
+  
+  private isAllowedEmail(email: string): boolean {
+    return email === 'bennylanza@gmail.com';
+  }
+
+  onImageUploaded(url: string) {
+    this.isUploading = true;
+
+    // Delay per garantire che l'immagine sia stata caricata completamente
+    setTimeout(() => {
+      this.isUploading = false;
+    }, 1000);
+  }
+
+  deleteImage() {
+    if (this.imageUrl) {
+      // Elimina l'immagine dal database
+      this.imageStateService.setImageUrl(null);
+    }
   }
 }

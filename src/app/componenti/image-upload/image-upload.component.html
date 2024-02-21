@@ -1,0 +1,4 @@
+<div class="container-fluid d-flex justify-content-center align-items-center py-5 bg-white">
+    <input type="file" (change)="onFileSelected($event)"/>
+    <button class="btn " (click)="uploadImage()" [disabled]="isUploading">Carica Promo</button>
+</div>
