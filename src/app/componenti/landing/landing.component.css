@@ -87,7 +87,7 @@
 
   .box-info-2{    
     bottom: 120px;
-    left: 120px;
+    left: 90px;
   }
 }
 
@@ -175,7 +175,8 @@
     background-color: white !important;
     color: black;
     margin: 0px;
-    padding-top: 0px;    
+    padding-top: 0px;
+      
   }
   p > i {    
     background-color: white !important;
@@ -196,7 +197,7 @@
     background-color: transparent !important;
     position: absolute;
     bottom: 95px;
-    right: 140px
+    right: 90px
   }
 
 

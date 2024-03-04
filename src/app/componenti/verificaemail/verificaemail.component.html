@@ -12,15 +12,15 @@
         <!-- Calling SendVerificationMail() method using authService Api -->
         <div class="formGroup text-center">
           <span>Non hai ricevuto la mail?</span>
-          <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">Clicca qui
+          <button type="button" class="btn btnPrimary ps-1" (click)="authService.SendVerificationMail()">Clicca qui
             <i class="fas fa-redo-alt"></i>
           </button>
           <p>Dopo aver verificato la tua mail devi completare il tuo profilo.</p>
           <button type="button" class="btn btn-outline-secondary" routerLink="/datipersonali">Completa il tuo profilo</button>
         </div>
       </div>
-      <div class="redirectToLogin text-center">
-        <span>Go back to?<a class="redirect" routerLink="/login"> Sign in</a></span>
+      <div class="redirectToLogin text-center mt-5">
+        <span><a class="redirect text-decoration-none" routerLink="/login">Torna al Login</a></span>
       </div>
     </div>
   </div>

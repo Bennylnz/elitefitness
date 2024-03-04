@@ -5,7 +5,7 @@
                   <h1>Reset Password</h1>
                   <p class="text-center">Per favore, inserisci la tua mail per resettare la password.</p>
                   <div class="input-box">
-                    <input type="email" class="formControl" placeholder="Email Address" #passwordResetEmail required>
+                    <input type="email" class="formControl" placeholder="E-mail" #passwordResetEmail required>
                       <i class='bx bxs-user'></i>
                   </div>                 
                   <button class="btn" (click)="authService.ForgotPassword(passwordResetEmail.value)">Reset</button>
