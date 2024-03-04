@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, HostBinding } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ImageStateService } from 'src/app/shared/services/image-state.service';
 import Typed from 'typed.js';
@@ -11,12 +11,18 @@ import Typed from 'typed.js';
 })
 export class LandingComponent implements AfterViewInit {
   @ViewChild('myVideo') myVideo: ElementRef;
+  @HostBinding('class.mobile') isMobile = false;
 
   isUploading: boolean = false;
   imageUrl: string | null = null;
   isUserWithEmailAllowed: boolean = false;
   
-  constructor(private renderer: Renderer2, private imageStateService: ImageStateService , private authService: AuthService) {}
+  constructor(private renderer: Renderer2, private imageStateService: ImageStateService , private authService: AuthService) {
+    this.checkIfMobile();
+    window.onresize = () => {
+    this.checkIfMobile();
+    };
+  }
 
   ngOnInit() {
        this.imageStateService.getImageUrl().subscribe((url) => {
@@ -29,11 +35,6 @@ export class LandingComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.setProperty(this.myVideo.nativeElement, 'autoplay', true);
-    this.renderer.setProperty(this.myVideo.nativeElement, 'muted', true);
-    this.myVideo.nativeElement.load();
-
-
     const options = {
       strings: [` <p class="fw-light">Creare un <span class="fw-bold">nuovo concetto di Wellness</span> rendendo quotidianamente accessibili <span class="fw-bold">nozioni d’eccellenza</span>, formando nuove generazioni di atleti e promuovendo una <span class="fw-bold">filosofia di competitivitá costruttiva.</span></p>`],
       typeSpeed: 20,      
@@ -48,6 +49,9 @@ export class LandingComponent implements AfterViewInit {
     const typed = new Typed('#typed-output', options);  
   }
 
+  checkIfMobile() {
+    this.isMobile = window.innerWidth < 992; // Modifica il valore 768 con la larghezza che preferisci
+  }
 
   isUserLoggedIn() : boolean{
     return this.authService.isLoggedIn; 

@@ -2,15 +2,11 @@
 
     
 
-<div class="container-fluid mt-custom vh-100 d-flex justify-content-center align-items-center p-0 ">  
-    <div class="row w-100">
-        <div class="col-12 col-md-12 vh-100 p-0" id="video-container">
-            <video #myVideo src="/assets/media/animazione1.mp4" type="video/mp4"  autoplay></video>
-        </div>
-    </div>
+<div class="container-fluid mt-custom px-0 w-100" [ngClass]="isMobile ? 'mobile-image' : 'pc-image'">    
 </div>
 
-
+<div class="container-fluid px-0 w-100" [ngClass]="isMobile ? 'promo-provv-mob img-fluid' : 'promo-provv'">    
+</div>
 
 
 
@@ -40,7 +36,7 @@
 <app-carousel-istruttori id="istruttori"></app-carousel-istruttori>
 
 
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center pb-5">
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center pb-5 px-0">
     <div class="row w-100 ">
         <div class="col-12 col-md-12 vh-100 d-flex justify-content-start align-items-center text-white vision">
             <h2 id="typed-output" class="w-50 h-50"></h2>
@@ -53,7 +49,6 @@
         <div class="col col-md-5 d-flex justify-content-center align-items-center text-white ms-5 vision">
             OFFRIRE ESPERIENZA D'ALLENAMENTO D'ELITE AD UN PREZZO ACCESSIBILE.
         </div>
-
         <div class="col-12 col-md-6 d-flex justify-content-center align-items-center text-white">
             <img src="https://picsum.photos/600" class="img-fluid" alt="">
         </div>
@@ -67,8 +62,26 @@
 
 </div>
 
+<div class="container-fluid pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 d-flex justify-content-end p-0">
+      <div [ngClass]="isMobile ? 'box-info-mob' : 'box-info'">
+        <div class="box-info-2">
+          <p class="fw-bold"><i class="fa-solid fa-location-dot fa-lg" style="color: #262626;"></i>Via Cardinale Borromeo, 18, Palermo</p>
+          <p><i class="fa-solid fa-phone fa-lg" style="color: #262626;"></i>091 0000000</p>
+          <a class="click-box" href="https://wa.me/393792128351" target="_blank"><i class="fa-brands fa-whatsapp fa-lg" style="color: #262626;"></i>+39 3792128351</a>
+          <p><i class="fa-regular fa-envelope fa-lg" style="color: #262626;"></i>suca@gmail.com</p>
+          <p>P.Iva suca</p>
+        </div>       
+      </div>
+    </div>
+    <div class="col-12 col-md-6 p-0">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d100403.36962082984!2d13.287271315538348!3d38.14936981641969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x1319e61a86f16f79%3A0x19fee121818328d1!2sVia%20Borromeo%20Cardinale%2C%2018%2C%2090142%20Palermo%20PA!3m2!1d38.1493986!2d13.3696723!5e0!3m2!1sit!2sit!4v1708516019955!5m2!1sit!2sit"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d100403.36962082984!2d13.287271315538348!3d38.14936981641969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x1319e61a86f16f79%3A0x19fee121818328d1!2sVia%20Borromeo%20Cardinale%2C%2018%2C%2090142%20Palermo%20PA!3m2!1d38.1493986!2d13.3696723!5e0!3m2!1sit!2sit!4v1708516019955!5m2!1sit!2sit" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
 
