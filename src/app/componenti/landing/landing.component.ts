@@ -58,9 +58,12 @@ export class LandingComponent implements AfterViewInit {
   }
 
   
+  private allowedEmails: string[] = ['bennylanza@gmail.com', 'salvatore.consales@libero.it']; // Aggiungi gli indirizzi email consentiti qui
+
   private isAllowedEmail(email: string): boolean {
-    return email === 'bennylanza@gmail.com';
+    return this.allowedEmails.includes(email);
   }
+  
 
   onImageUploaded(url: string) {
     this.isUploading = true;

@@ -68,7 +68,7 @@ export class FormDatiComponent {
 
       // Carica l'immagine solo se è stata selezionata
       if (this.selectedFile) {
-        const filePath = `/images/${this.selectedFile.name}`;
+        const filePath = `/profile_images/${this.selectedFile.name}`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, this.selectedFile);
 

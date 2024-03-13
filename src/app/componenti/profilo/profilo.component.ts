@@ -89,9 +89,12 @@ export class ProfiloComponent implements OnInit {
   }
   
 
+  private allowedEmails: string[] = ['bennylanza@gmail.com', 'salvatore.consales@libero.it']; // Aggiungi gli indirizzi email consentiti qui
+
   private isAllowedEmail(email: string): boolean {
-    return email === 'bennylanza@gmail.com';
+    return this.allowedEmails.includes(email);
   }
+  
 
   async deleteAccount() {
     const user = this.afAuth.currentUser;

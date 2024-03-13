@@ -32,10 +32,12 @@ export class BlogComponent implements OnInit{
     });
   }
 
-  private isAllowedEmail(email: string): boolean {
-    // Aggiungi la tua logica per determinare se l'email dell'utente è consentita
-    return email === 'bennylanza@gmail.com';
-  }
+  private allowedEmails: string[] = ['bennylanza@gmail.com', 'salvatore.consales@libero.it']; // Aggiungi gli indirizzi email consentiti qui
+
+private isAllowedEmail(email: string): boolean {
+  return this.allowedEmails.includes(email); 
+}
+
 
   salvaArticolo() {
     // Verifica se è stata fornita un'immagine
