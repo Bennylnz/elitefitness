@@ -1,0 +1,13 @@
+*{
+    background-color: var(--grey);
+}
+
+img{
+    width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+    img{
+        width: 80%;
+    }
+}

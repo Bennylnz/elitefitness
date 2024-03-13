@@ -1,7 +1,18 @@
-<h1>{{ (articolo | async)?.title }}</h1>
-  <p>{{ (articolo | async)?.description }}</p>
-  <img [src]="(articolo | async)?.photo" alt="Immagine articolo">
+<app-navbar></app-navbar>
 
+<div class="container-fluid mt-5">
+    <div class="row text-center text-white py-5">
+      <h1>{{ (articolo | async)?.title }}</h1>
+
+    </div>
+    <div class="row justify-content-center">
+      <img [src]="(articolo | async)?.photo" alt="Immagine articolo">
+
+    </div>
+    <div class="row text-white p-5">
+      <p [innerHTML]="(articolo | async)?.description"></p>
+    </div>
+</div>
 
 
 

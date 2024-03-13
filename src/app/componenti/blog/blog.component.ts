@@ -66,27 +66,29 @@ export class BlogComponent implements OnInit{
   }
 
   private salvaArticoloNelDatabase() {
+    // Sostituisci i caratteri di nuova riga con <br>
+    const descriptionWithLineBreaks = this.blogDescription.replace(/\n/g, '<br>');
+  
     // Crea un oggetto con i dati dell'articolo
     const articolo = {
       title: this.blogTitle,
-      description: this.blogDescription,
+      description: descriptionWithLineBreaks,
       photo: this.downloadURL || '', // Utilizza l'URL dell'immagine se disponibile
     };
-
+  
     const articoloId = this.db.createPushId(); // Genera un nuovo ID univoco
     articolo['id'] = articoloId; // Assegna l'ID all'oggetto articolo
-
-
+  
     // Salva l'articolo nel database Firebase
     this.db.list('/articoli').set(articoloId, articolo); // Salva l'articolo con l'ID univoco come chiave
-
-
+  
     // Resetta i campi dopo il salvataggio
     this.blogTitle = '';
     this.blogDescription = '';
     this.blogPhoto = null;
     this.downloadURL = '';
   }
+  
 
   gestisciFileInput(files: FileList | null) {
     if (files && files.length > 0) {

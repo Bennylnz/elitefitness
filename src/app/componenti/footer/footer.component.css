@@ -26,3 +26,21 @@ td{
     background-color: transparent;
     color: white;
 }
+
+.credit-footer{
+    align-items: flex-end;    
+}
+
+.follow-footer{
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 992px) {
+    .credit-footer{
+        align-items: center;
+    }
+    
+    .follow-footer{
+        align-items: center;
+    }
+}
