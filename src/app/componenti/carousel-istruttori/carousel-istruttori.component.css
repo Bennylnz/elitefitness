@@ -127,6 +127,11 @@ swiper-container {
       border-radius: 10px;
       
     }
+
+    .text-center{
+      color: white;
+      background-color: var(--grey);
+    }
   
     
   

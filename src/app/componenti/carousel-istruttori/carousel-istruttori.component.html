@@ -1,6 +1,7 @@
-<swiper-container class="mySwiper container-fluid" pagination="true" pagination-clickable="true" space-between="30"
-    slides-per-view="3" free-mode="true">
-    <swiper-slide *ngFor="let istruttore of carouselService.istruttori" >  
+<h4 class="text-center mb-0 pt-5">Scorri per scoprire gli altri docenti</h4>
+<swiper-container class="mySwiper container-fluid" space-between="20" free-mode="true" slides-per-view="auto">
+
+    <swiper-slide *ngFor="let istruttore of carouselService.istruttori">  
       <div class="card d-flex align-items-center" >
       <img src="{{istruttore.img}}" alt="">
       <div class="bar">
@@ -15,7 +16,6 @@
     <button class="btn text-light my-2" (click)="openPopup(istruttore)">Dettaglio</button>
   </div>   
 </swiper-slide>
-    
 </swiper-container>
 
 

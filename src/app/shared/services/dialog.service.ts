@@ -15,6 +15,7 @@ export class DialogService {
       height: '73vh',
       data: { istruttore },
       backdropClass: 'backdropBackground',
+      autoFocus: false,
     });
   }
 }
