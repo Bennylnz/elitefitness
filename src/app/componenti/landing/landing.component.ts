@@ -4,12 +4,13 @@ import { ImageStateService } from 'src/app/shared/services/image-state.service';
 import Typed from 'typed.js';
 
 
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements AfterViewInit {
+export class LandingComponent  {
   @ViewChild('myVideo') myVideo: ElementRef;
   @HostBinding('class.mobile') isMobile = false;
 
@@ -32,22 +33,23 @@ export class LandingComponent implements AfterViewInit {
     this.authService.userEmail.subscribe((email: string) => {
       this.isUserWithEmailAllowed = this.isAllowedEmail(email);
     });
+
+   
   }
 
-  ngAfterViewInit() {
-    const options = {
-      strings: [` <p class="fw-light">Creare un <span class="fw-bold">nuovo concetto di Wellness</span> rendendo quotidianamente accessibili <span class="fw-bold">nozioni d’eccellenza</span>, formando nuove generazioni di atleti e promuovendo una <span class="fw-bold">filosofia di competitivitá costruttiva.</span></p>`],
-      typeSpeed: 20,      
-      startDelay: 500,
-      backDelay: 600,
-      showCursor: false,
-      cursorChar: '|',
-      loop: true
+  // ngAfterViewInit() {
+  //   const options = {
+  //     strings: [` <p class="fw-light">Creare un <span class="fw-bold">nuovo concetto di Wellness</span> rendendo quotidianamente accessibili <span class="fw-bold">nozioni d’eccellenza</span>, formando nuove generazioni di atleti e promuovendo una <span class="fw-bold">filosofia di competitivitá costruttiva.</span></p>`],
+  //     typeSpeed: 20,      
+  //     startDelay: 500,
+  //     backDelay: 600,
+  //     showCursor: false,
+  //     cursorChar: '|',
+  //     loop: true
+  //   };
 
-    };
-
-    const typed = new Typed('#typed-output', options);  
-  }
+  //   const typed = new Typed('#typed-output', options);  
+  // }
 
   checkIfMobile() {
     this.isMobile = window.innerWidth < 992; // Modifica il valore 768 con la larghezza che preferisci

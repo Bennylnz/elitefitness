@@ -54,11 +54,28 @@
 
 
 
-.vision , .mission{
+.vision {
     font-family: "museo-slab" , serif;
     font-weight: 300;
-    font-size: x-large;
+    font-size: xx-large; background-image: url(../../../assets/media/vision.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
+
+.vision-text{
+  background-color: transparent !important;
+  margin-left: 80px;
+  margin-top: 50px;
+}
+
+.vision-text > span{
+  background-color: transparent !important;
+}
+
+
 
 
 .img-promo{
@@ -87,8 +104,12 @@
 
   .box-info-2{    
     bottom: 120px;
-    left: 90px;
+    left: 60px;
   }
+
+  .vision {    
+    font-size: x-large;    
+}
 }
 
 @media screen and (min-width: 1800px) {
@@ -106,15 +127,6 @@
       height: 100%; 
       background-position: center
     }
-  }
-
-
-
-  .vision{
-    background-image: url(../../../assets/media/vision.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 
   
@@ -197,7 +209,7 @@
     background-color: transparent !important;
     position: absolute;
     bottom: 95px;
-    right: 90px
+    right: 90px;
   }
 
 
